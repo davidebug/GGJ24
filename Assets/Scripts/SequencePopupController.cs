@@ -23,7 +23,6 @@ public class SequencePopupController : MonoBehaviour
 
     private void Start()
     {
-       
         
     }
 

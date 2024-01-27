@@ -95,10 +95,10 @@ public class GameManager : Manager<GameManager>
         if(bodyPartIndex == correctImageIndex)
         {
             CurrentCorrectNumber++;
-            CorrectSequenceOrder[CurrentCorrectNumber] = correctImageIndex;
             return true;
         }
 
+        CurrentCorrectNumber = 0;
         OnWrongSequence?.Invoke();
         return false;
     }
@@ -200,6 +200,6 @@ public class GameManager : Manager<GameManager>
 
     internal void UnselectEverything()
     {
-        throw new NotImplementedException();
+        OnWrongSequence?.Invoke();
     }
 }
