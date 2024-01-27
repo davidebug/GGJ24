@@ -26,6 +26,9 @@ public class GameManager : Manager<GameManager>
     public int CurrentCorrectNumber;
     public int TotalSequenceLength;
 
+    public int CurrentTime;
+    public int MaxTime;
+
     void Start()
     {
         StartNewGame();
