@@ -27,7 +27,6 @@ public class GameManager : Manager<GameManager>
     public Action<GameState> OnGameStateChanged;
 
     public Action OnStageBegin;
-    public Action<bool> OnGameOver;
 
     public int CurrentCorrectNumber;
     public int TotalSequenceLength
@@ -41,6 +40,7 @@ public class GameManager : Manager<GameManager>
 
     private UIManager uiManagerInstance;
     public Character currentCharacter;
+    private int currentSequenceLength;
     void Start()
     {
         uiManagerInstance = UIManager.Get();
@@ -85,6 +85,7 @@ public class GameManager : Manager<GameManager>
         currentCharacter.gameObject.SetActive(false);
         MaxTime = currentCharacter.MaxTime;
         CorrectSequenceOrder = currentCharacter.sequenceOrder;
+        currentSequenceLength = CorrectSequenceOrder.Length;
         ShowCurrentCharacter();
     }
 
@@ -99,16 +100,22 @@ public class GameManager : Manager<GameManager>
     public bool TryToSelectBodyPart(int bodyPartIndex)
     {
         Assert.IsNotNull(CorrectSequenceOrder);
+
         if(CurrentCorrectNumber > CorrectSequenceOrder.Length)
         {
             Debug.LogError($"Sequence array dim is: {CurrentCorrectNumber} you are trying to read position {CurrentCorrectNumber}");
         }
 
+         CurrentCorrectNumber = Math.Min(CurrentCorrectNumber, CorrectSequenceOrder.Length);
         int correctImageIndex = CorrectSequenceOrder[CurrentCorrectNumber];
 
         if(bodyPartIndex == correctImageIndex)
         {
             CurrentCorrectNumber++;
+            if(CurrentCorrectNumber >= currentSequenceLength)
+            {
+                EndGame(true);
+            }
             return true;
         }
 
@@ -154,8 +161,9 @@ public class GameManager : Manager<GameManager>
             OnGameStateChanged?.Invoke(gameState);
         }
 
+        ResetGameState();
     }
-    public void CleanGameScene()
+    public void ResetGameState()
     {
         GameObject.Destroy(currentCharacter);
         MaxTime = CurrentTime = 0f;
