@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyImage: {fileID: 0}
-  bodyNumberIndex: 4
+  bodyNumberIndex: 3
 --- !u!1 &8577109452569232286
 GameObject:
   m_ObjectHideFlags: 0
