@@ -62,6 +62,20 @@ public class GameManager : Manager<GameManager>
         
     }
 
+    public void ResetGame()
+    {
+        CurrentTime = 0;
+        levelIndex = 0;
+        LoadCurrentCharacter(levelIndex);
+        gameState = GameState.SOLUTION;
+        OnGameStateChanged?.Invoke(gameState);
+        //UIManager.Instance.ClearCardsUI();
+        //UIManager.Instance.disableGameEndedScreen();
+
+
+    }
+
+
     public void LoadCurrentCharacter(int levelIndex)
     {
         int currentCharacterIndex = Math.Min(levelIndex, levelDatasSO.characters.Length);

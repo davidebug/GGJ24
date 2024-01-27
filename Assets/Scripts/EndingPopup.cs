@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EndingPopup : MonoBehaviour
 {
-    public GameObject WinText;
     public GameObject LoseText;
+    public GameObject Buttons;
+    public GameObject NextChar;
 
     void OnEnable()
     {
@@ -18,14 +19,16 @@ public class EndingPopup : MonoBehaviour
         if(currentState == GameState.VICTORY)
         {
             this.gameObject.SetActive(true);
-            WinText.SetActive(true);
             LoseText.SetActive(false);
+            Buttons.SetActive(false);
+            NextChar.SetActive(true);  
         }    
         else if(currentState == GameState.GAME_OVER)
         {
             this.gameObject.SetActive(true);
-            WinText.SetActive(false);
             LoseText.SetActive(true);
+            Buttons.SetActive(true);
+            NextChar.SetActive(false);
         }
         else
         {
