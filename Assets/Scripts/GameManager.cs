@@ -39,12 +39,12 @@ public class GameManager : Manager<GameManager>
     public int CurrentTime;
     public int MaxTime;
 
-    private UIManager UIManager;
+    private UIManager uiManagerInstance;
     public Character currentCharacter;
     void Start()
     {
-        UIManager = UIManager.Get();
-        Assert.IsNotNull(UIManager);
+        uiManagerInstance = UIManager.Get();
+        Assert.IsNotNull(uiManagerInstance);
         Assert.IsNotNull(levelDatasSO);
         StartNewGame();
         
@@ -65,17 +65,42 @@ public class GameManager : Manager<GameManager>
     public void LoadCurrentCharacter(int levelIndex)
     {
         int currentCharacterIndex = Math.Min(levelIndex, levelDatasSO.characters.Length);
-        currentCharacter = Instantiate(levelDatasSO.GetCharacter(currentCharacterIndex), UIManager.transform);
+        currentCharacter = Instantiate(levelDatasSO.GetCharacter(currentCharacterIndex));
 
-        // put character in the UI
+        currentCharacter.gameObject.transform.SetParent(uiManagerInstance.bodyRectTransformPlaceHolder, true);
+        currentCharacter.gameObject.SetActive(false);
         MaxTime = currentCharacter.MaxTime;
         CorrectSequenceOrder = currentCharacter.sequenceOrder;
-
+        ShowCurrentCharacter();
     }
 
-    public void SelectBodyPart(int bodyPartIndex)
+    public void ShowCurrentCharacter()
     {
+        currentCharacter.gameObject.SetActive(true);
+        RectTransform rectTransform = currentCharacter.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = Vector3.zero;  
+    }
 
+    //Return true if its the correct body part, false otherwise
+    public bool TryToSelectBodyPart(int bodyPartIndex)
+    {
+        Assert.IsNotNull(CorrectSequenceOrder);
+        if(CurrentCorrectNumber > CorrectSequenceOrder.Length)
+        {
+            Debug.LogError($"Sequence array dim is: {CurrentCorrectNumber} you are trying to read position {CurrentCorrectNumber}");
+        }
+
+        int correctImageIndex = CorrectSequenceOrder[CurrentCorrectNumber];
+
+        if(bodyPartIndex == correctImageIndex)
+        {
+            CurrentCorrectNumber++;
+            CorrectSequenceOrder[CurrentCorrectNumber] = correctImageIndex;
+            return true;
+        }
+
+        OnWrongSequence?.Invoke();
+        return false;
     }
 
     //    //}
@@ -158,4 +183,8 @@ public class GameManager : Manager<GameManager>
         Application.Quit();
     }
 
+    internal void UnselectEverything()
+    {
+        throw new NotImplementedException();
+    }
 }
