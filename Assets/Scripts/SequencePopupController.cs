@@ -18,11 +18,12 @@ public class SequencePopupController : MonoBehaviour
 
     void OnEnable()
     {
+        GameManager.Get().OnGameStateChanged += ShowAnimateSequence;
     }
 
     private void Start()
     {
-        GameManager.Get().OnGameStateChanged += ShowAnimateSequence;
+       
         
     }
 
@@ -38,6 +39,8 @@ public class SequencePopupController : MonoBehaviour
 
     private IEnumerator AnimateSequencePopup()
     {
+        this.gameObject.SetActive(true);
+
         // Fade in animation
         yield return FadeIn();
 
@@ -50,6 +53,7 @@ public class SequencePopupController : MonoBehaviour
         // Fade out animation
         yield return FadeOut();
 
+        this.gameObject.SetActive(false);
         // Start game
         GameManager.Get().StartTimer();
     }

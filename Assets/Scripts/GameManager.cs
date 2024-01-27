@@ -187,10 +187,14 @@ public class GameManager : Manager<GameManager>
 
     public void Update()
     {
-        CurrentTime += Time.deltaTime;
-        if(CurrentTime > MaxTime)
+        if(gameState == GameState.PLAYING)
         {
-            EndGame(false);
+            CurrentTime += Time.deltaTime;
+            if (CurrentTime > MaxTime)
+            {
+                EndGame(false);
+            }
+
         }
     }
 
