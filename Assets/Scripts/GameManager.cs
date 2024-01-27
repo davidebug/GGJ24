@@ -41,12 +41,23 @@ public class GameManager : Manager<GameManager>
     private UIManager uiManagerInstance;
     public Character currentCharacter;
     private int currentSequenceLength;
+    [SerializeField]
+    private bool SkipMainMenu;
     void Start()
     {
         uiManagerInstance = UIManager.Get();
         Assert.IsNotNull(uiManagerInstance);
         Assert.IsNotNull(levelDatasSO);
-        StartNewGame();
+        if(SkipMainMenu)
+        {
+            StartNewGame();
+
+        }
+        else
+        {
+            gameState = GameState.START_MENU;   
+            OnGameStateChanged?.Invoke(gameState);
+        }
         
     }
 

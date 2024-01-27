@@ -9,14 +9,34 @@ using UnityEngine.UI;
 public class UIManager : Manager<UIManager>
 {
     public RectTransform bodyRectTransformPlaceHolder;
-
+    public MainMenuPanel mainMenuPanel;
+  
+   
     public void Start()
     {
         if(bodyRectTransformPlaceHolder == null)
         {
             bodyRectTransformPlaceHolder = GetComponent<RectTransform>();
         }
+
+        GameManager.Get().OnGameStateChanged += ManagePanels;
     }
+
+    private void ManagePanels(GameState state)
+    {
+        switch (state)
+        {
+            case GameState.START_MENU:
+                mainMenuPanel.gameObject.SetActive(true);
+                break;
+            default:
+                mainMenuPanel.gameObject.SetActive(false);
+                break;
+
+        }
+    }
+
+
     //const string GAME_VICTORY_TEXT = "PLAYER WINS THE MATCH!";
     //const string GAME_OVER_TEXT = "GAME OVER!";
 
