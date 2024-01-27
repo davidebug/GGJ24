@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Pointer : MonoBehaviour
 {
+    public Texture2D cursorTexture;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
+
     void Start()
     {
-        Debug.Log("In Pointer script setting Cursoer.visible = false,  gameObject.name = " + gameObject.name);
-
-        Cursor.visible = false;
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
     }
     void Update()
     {
