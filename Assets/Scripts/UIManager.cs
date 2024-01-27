@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 
 
-public class UIManager : MonoBehaviour
+public class UIManager : Manager<UIManager>
 {
 
     //const string GAME_VICTORY_TEXT = "PLAYER WINS THE MATCH!";
