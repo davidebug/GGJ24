@@ -23,7 +23,8 @@ public class GameManager : Manager<GameManager>
     public Action OnWrongSequence;
     public Action<bool> OnGameOver;
 
-
+    public int CurrentCorrectNumber;
+    public int TotalSequenceLength;
 
     void Start()
     {
