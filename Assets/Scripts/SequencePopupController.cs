@@ -16,14 +16,22 @@ public class SequencePopupController : MonoBehaviour
 
     private Character currentCharacter;
 
+    private bool Subscribed = false;
     void OnEnable()
     {
-        GameManager.Get().OnGameStateChanged += ShowAnimateSequence;
+        if (GameManager.Get())
+        {
+            GameManager.Get().OnGameStateChanged += ShowAnimateSequence;
+            Subscribed = true;  
+        }
     }
 
     private void Start()
     {
-        
+        if (!Subscribed)
+        {
+            GameManager.Get().OnGameStateChanged += ShowAnimateSequence;
+        }
     }
 
     public void ShowAnimateSequence(GameState currentState)
