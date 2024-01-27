@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 204.5256, y: 275.93048, z: 2.319577}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bae97d5214a86b40ab80d6e54730a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 4f5a187976043b346b13c597c4c29854, type: 3}
-  cursorMode: 0
+  cursorTexture: {fileID: 2800000, guid: 5ec28770079e05d488ff650fda9e66cf, type: 3}
+  cursorMode: 1
   hotSpot: {x: 0, y: 0}
