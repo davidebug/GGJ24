@@ -6,10 +6,14 @@ using UnityEngine;
 [System.Serializable]
 public class LevelDataAssetScriptableObject : ScriptableObject
 {
-    public Texture[] textures;
-    public int[] sequenceOrder;
-    public int MaxTime;
-    public Vector2[] CoordinatesXY;
+    public Character[] characters;
+    
+  
 
+
+    public Character GetCharacter(int index)
+    {
+        return characters[index];   
+    }
 
 }

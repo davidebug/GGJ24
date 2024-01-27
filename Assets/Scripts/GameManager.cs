@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.Rendering;
 
 public enum GameState
 {
@@ -24,7 +26,11 @@ public class GameManager : Manager<GameManager>
     public Action<bool> OnGameOver;
 
     public int CurrentCorrectNumber;
-    public int TotalSequenceLength;
+    public int TotalSequenceLength
+    {
+        get { return CorrectSequenceOrder.Length; }
+    }
+    public int[] CorrectSequenceOrder;
 
     public int CurrentTime;
     public int MaxTime;
@@ -38,12 +44,23 @@ public class GameManager : Manager<GameManager>
     {
 
         gameState = GameState.PLAYING;
+        CurrentTime = 0;
+        LoadCurrentCharacter(levelIndex);
         //UIManager.Instance.ClearCardsUI();
         //UIManager.Instance.disableGameEndedScreen();
 
-     
+        
     }
 
+    public void LoadCurrentCharacter(int levelIndex)
+    {
+        int currentCharacterIndex = Math.Min(levelIndex, levelDatasSO.Length);
+        Character currentCharacter = Instantiate(levelDatasSO[currentCharacterIndex].GetCharacter(currentCharacterIndex));
+        // put character in the UI
+        MaxTime = currentCharacter.MaxTime;
+        CorrectSequenceOrder = currentCharacter.sequenceOrder;
+
+    }
 
     //public IEnumerator TryPlayCard()
     //{
@@ -94,18 +111,19 @@ public class GameManager : Manager<GameManager>
         if (victory)
         {
             gameState = GameState.VICTORY;
-
+            levelIndex++;
         }
         else
         {
             gameState = GameState.GAME_OVER;
+          
         }
 
     }
 
     public void StartNewGame()
     {
-        
+        levelIndex = 0;
         initGameValues();
 
     }
