@@ -8,15 +8,22 @@ public class Character : MonoBehaviour
     public int[] sequenceOrder;
     public int MaxTime;
 
+    public void Awake()
+    {
+        if (bodyParts == null)
+        {
+            bodyParts = GetComponentsInChildren<BodyPart>();
+        }
+    }
     void Start()
     {
-        
+
     }
 
-    
+
     void Update()
     {
-        
+
     }
 
 }

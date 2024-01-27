@@ -17,7 +17,7 @@ public class GameManager : Manager<GameManager>
     //public LevelDataAsset dataAsset;
 
     public GameState gameState;
-    public LevelDataAssetScriptableObject[] levelDatasSO;
+    public LevelDataAssetScriptableObject levelDatasSO;
 
     public int levelIndex = 1;
 
@@ -35,9 +35,13 @@ public class GameManager : Manager<GameManager>
     public int CurrentTime;
     public int MaxTime;
 
+    private UIManager UIManager;
     void Start()
     {
+        UIManager = UIManager.Get();
+        Assert.IsNotNull(UIManager);    
         StartNewGame();
+        
     }
 
     public void initGameValues()
@@ -54,8 +58,9 @@ public class GameManager : Manager<GameManager>
 
     public void LoadCurrentCharacter(int levelIndex)
     {
-        int currentCharacterIndex = Math.Min(levelIndex, levelDatasSO.Length);
-        Character currentCharacter = Instantiate(levelDatasSO[currentCharacterIndex].GetCharacter(currentCharacterIndex));
+        int currentCharacterIndex = Math.Min(levelIndex, levelDatasSO.characters.Length);
+        Character currentCharacter = Instantiate(levelDatasSO.GetCharacter(currentCharacterIndex), UIManager.transform);
+
         // put character in the UI
         MaxTime = currentCharacter.MaxTime;
         CorrectSequenceOrder = currentCharacter.sequenceOrder;
