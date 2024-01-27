@@ -17,20 +17,20 @@ public class SequenceBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SequenceLength = GameManager.Get().TotalSequenceLength;
-        CurrentCorrectNumber = GameManager.Get().CurrentCorrectNumber;
-
         UpdateSequence();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // You can leave Update() empty if nothing needs to be updated continuously.
+        UpdateSequence();
     }
     
     void UpdateSequence()
     {
+        SequenceLength = GameManager.Get().TotalSequenceLength;
+        CurrentCorrectNumber = GameManager.Get().CurrentCorrectNumber;
+
         float currentX = 0f;
         // Instantiate and attach the correct or empty try assets with spacing
         for (int i = 0; i < SequenceLength; i++)

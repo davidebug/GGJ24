@@ -176,14 +176,21 @@ public class GameManager : Manager<GameManager>
     }
     public void ResetGameState()
     {
-        GameObject.Destroy(currentCharacter);
         MaxTime = CurrentTime = 0f;
-
     }
     public void StartNewGame()
     {
         levelIndex = 0;
         initGameValues();
+
+    }
+
+    public void NextStage()
+    {
+        gameState = GameState.SOLUTION;
+        OnGameStateChanged?.Invoke(gameState);
+        LoadCurrentCharacter(levelIndex);
+        ShowCurrentCharacter();
 
     }
 

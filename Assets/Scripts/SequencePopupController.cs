@@ -38,6 +38,7 @@ public class SequencePopupController : MonoBehaviour
     {
         if(currentState == GameState.SOLUTION)
         {
+            this.gameObject.SetActive(true);
             currentCharacter = GameManager.Get().currentCharacter;
             StartCoroutine(AnimateSequencePopup());
         }
