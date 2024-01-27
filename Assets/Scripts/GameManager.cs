@@ -23,6 +23,7 @@ public class GameManager : Manager<GameManager>
 
     public Action OnCorrectSequence;
     public Action OnWrongSequence;
+    public Action OnStageBegin;
     public Action<bool> OnGameOver;
 
     public int CurrentCorrectNumber;
@@ -36,7 +37,7 @@ public class GameManager : Manager<GameManager>
     public int MaxTime;
 
     private UIManager UIManager;
-    private Character currentCharacter;
+    public Character currentCharacter;
     void Start()
     {
         UIManager = UIManager.Get();
@@ -52,6 +53,7 @@ public class GameManager : Manager<GameManager>
         gameState = GameState.PLAYING;
         CurrentTime = 0;
         LoadCurrentCharacter(levelIndex);
+        OnStageBegin?.Invoke();
         //UIManager.Instance.ClearCardsUI();
         //UIManager.Instance.disableGameEndedScreen();
 
