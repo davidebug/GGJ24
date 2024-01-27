@@ -15,12 +15,15 @@ public class GameManager : Manager<GameManager>
     //public LevelDataAsset dataAsset;
 
     public GameState gameState;
+    public LevelDataAssetScriptableObject levelDataSO;
 
     public int levelIndex = 1;
 
     public Action OnCorrectSequence;
     public Action OnWrongSequence;
     public Action<bool> OnGameOver;
+
+
 
     void Start()
     {
