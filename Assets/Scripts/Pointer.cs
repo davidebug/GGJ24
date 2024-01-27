@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Pointer : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        Debug.Log("In Pointer script setting Cursoer.visible = false,  gameObject.name = " + gameObject.name);
 
-    // Update is called once per frame
+        Cursor.visible = false;
+    }
     void Update()
     {
         
