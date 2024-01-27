@@ -33,7 +33,7 @@ public class GameBarDecrease : MonoBehaviour
         if(currentState == GameState.PLAYING)
         {
             // Calculate the elapsed time since the start
-            float elapsedTime = Time.time - startTime;
+            float elapsedTime = GameManager.Get().CurrentTime;
 
             // Calculate the progress (how much of the time has passed)
             float progress = elapsedTime / decreaseDuration;

@@ -36,8 +36,8 @@ public class GameManager : Manager<GameManager>
     }
     public int[] CorrectSequenceOrder;
 
-    public int CurrentTime;
-    public int MaxTime;
+    public float CurrentTime;
+    public float MaxTime;
 
     private UIManager uiManagerInstance;
     public Character currentCharacter;
@@ -126,24 +126,25 @@ public class GameManager : Manager<GameManager>
 
     //}
 
-    public void GameOver(bool victory)
+    public void EndGame(bool victory)
     {
         if (victory)
         {
             gameState = GameState.VICTORY;
+            OnGameStateChanged?.Invoke(gameState);
             levelIndex++;
         }
         else
         {
             gameState = GameState.GAME_OVER;
-          
+            OnGameStateChanged?.Invoke(gameState);
         }
 
     }
     public void CleanGameScene()
     {
         GameObject.Destroy(currentCharacter);
-        MaxTime = CurrentTime = 0;
+        MaxTime = CurrentTime = 0f;
 
     }
     public void StartNewGame()
@@ -181,6 +182,16 @@ public class GameManager : Manager<GameManager>
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+
+    public void Update()
+    {
+        CurrentTime += Time.deltaTime;
+        if(CurrentTime > MaxTime)
+        {
+            EndGame(false);
+        }
     }
 
     internal void UnselectEverything()
