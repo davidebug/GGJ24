@@ -36,6 +36,7 @@ public class GameManager : Manager<GameManager>
     public int MaxTime;
 
     private UIManager UIManager;
+    private Character currentCharacter;
     void Start()
     {
         UIManager = UIManager.Get();
@@ -60,7 +61,7 @@ public class GameManager : Manager<GameManager>
     public void LoadCurrentCharacter(int levelIndex)
     {
         int currentCharacterIndex = Math.Min(levelIndex, levelDatasSO.characters.Length);
-        Character currentCharacter = Instantiate(levelDatasSO.GetCharacter(currentCharacterIndex), UIManager.transform);
+        currentCharacter = Instantiate(levelDatasSO.GetCharacter(currentCharacterIndex), UIManager.transform);
 
         // put character in the UI
         MaxTime = currentCharacter.MaxTime;
@@ -68,26 +69,10 @@ public class GameManager : Manager<GameManager>
 
     }
 
-    //public IEnumerator TryPlayCard()
-    //{
-    //    //if (cardObject.card.cost <= myPlayer.GetActionPoints() && gameState == GameState.PLAYER_TURN)
-    //    //{
-    //    //    gameState = GameState.PLAYING_CARD;
-    //    //    myPlayer.PlayCard(cardObject.card, enemyPlayer);
-    //    //    UIManager.Instance.Playcard(cardObject);
-    //    //    yield return UIManager.Instance.showEventNotification(true, cardObject.card);
+    public void SelectBodyPart(int bodyPartIndex)
+    {
 
-    //    //    Destroy(cardObject.gameObject);
-    //    //    gameState = GameState.PLAYER_TURN;
-
-    //    //    if (enemyPlayer.healthPoints <= 0)
-    //    //        callGameEnded(true);
-    //    //    else if (!myPlayer.CanStillPlay())
-    //    //    {
-    //    //        myPlayer.MoveAllToTrash();
-    //    //        UIManager.Instance.ClearCardsUI();
-    //    //        StartCoroutine(NextTurn());
-    //    //    }
+    }
 
     //    //}
     //}
@@ -126,7 +111,12 @@ public class GameManager : Manager<GameManager>
         }
 
     }
+    public void CleanGameScene()
+    {
+        GameObject.Destroy(currentCharacter);
+        MaxTime = CurrentTime = 0;
 
+    }
     public void StartNewGame()
     {
         levelIndex = 0;
