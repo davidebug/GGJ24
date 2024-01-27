@@ -110,8 +110,7 @@ MonoBehaviour:
   - {fileID: 429402828992742600, guid: 0e5751af84a397c468529c29842376ff, type: 3}
   - {fileID: 429402828992742600, guid: 0284d8cb93fb4854ca7d6474620ec4f5, type: 3}
   - {fileID: 429402828992742600, guid: 7acc047f96b132d4bb67b230675885c6, type: 3}
-  - {fileID: 429402828992742600, guid: f4986019a5c759242a4fedf33d90a3bf, type: 3}
   arrowPrefab: {fileID: 429402828992742600, guid: 94455f97b86664b4f822d0b2e8994215, type: 3}
-  numberOfPieces: 5
   animationDuration: 0.3
   pieceSpacing: 80
+  maxPieces: 10

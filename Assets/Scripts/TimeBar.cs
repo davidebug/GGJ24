@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class GameBarDecrease : MonoBehaviour
 {
-    public float maxTime = 60f; // Maximum time in seconds
+    private float maxTime = 0f; // Maximum time in seconds
     public Transform greenBar; // Reference to the green bar transform
-    public float decreaseDuration = 60f; // Duration over which the bar decreases
+    private float decreaseDuration = 60f; // Duration over which the bar decreases
 
     private float startTime;
 
     void Start()
     {
+        maxTime = GameManager.Get().MaxTime;
+        decreaseDuration = maxTime;
         startTime = Time.time;
     }
 

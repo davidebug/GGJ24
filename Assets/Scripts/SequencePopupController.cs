@@ -5,49 +5,63 @@ using UnityEngine;
 
 public class SequencePopupController : MonoBehaviour
 {
-    public GameObject[] sequencePiecePrefabs; // Prefab of the sequence piece
-    public GameObject arrowPrefab; // Prefab of the sequence piece
+    public GameObject[] sequencePiecePrefabs; // Prefab of the sequence pieces
+    public GameObject arrowPrefab; // Prefab of the arrow separator
 
-    public int numberOfPieces = 5; // Number of sequence pieces
     public float animationDuration = 0.5f; // Duration of the animation in seconds
     public float pieceSpacing = 10f; // Spacing between pieces
+    public int maxPieces = 10;
 
     private void Start()
     {
+        StartCoroutine(AnimateSequencePieces());
+    }
+
+    private IEnumerator AnimateSequencePieces()
+    {
         // Calculate the total width of all pieces and separators
-        float totalWidth = sequencePiecePrefabs[0].transform.localScale.x * numberOfPieces + pieceSpacing * (numberOfPieces - 1);
+        float totalWidth = sequencePiecePrefabs.Length * (sequencePiecePrefabs[0].transform.localScale.x + pieceSpacing);
 
         // Calculate the initial x position for the first piece
-        float initialX = -totalWidth;
+        float initialX = -totalWidth / 1.8f;
 
-        // Calculate the position for the arrow
-        float arrowXPos = initialX;
         bool arrow = false;
+        int pieceIndex = 0;
 
+        float currentX = 0;
+        float yPos = sequencePiecePrefabs.Length > maxPieces /2 ? sequencePiecePrefabs[pieceIndex].transform.localScale.y + pieceSpacing : 0;
+
+        // Iterate over the sequence pieces
         for (int i = 0; i < (sequencePiecePrefabs.Length * 2) - 1; i++)
         {
             // Calculate the position for the current piece
-            float xPos = initialX + (sequencePiecePrefabs[i].transform.localScale.x + pieceSpacing) * i;
+            float xPos = initialX + (sequencePiecePrefabs[pieceIndex].transform.localScale.x + pieceSpacing) * i;
+
+            // Check if xPos exceeds totalWidth, indicating a new row
+            if (pieceIndex > ((maxPieces/2)-1))
+            {
+                // Start a new row
+                currentX = initialX;
+                // Move the y position down for the new row
+                yPos = sequencePiecePrefabs[pieceIndex].transform.localScale.y - 20 - pieceSpacing;
+                // Update xPos for the new row
+                xPos = initialX + (sequencePiecePrefabs[pieceIndex].transform.localScale.x + pieceSpacing) * (i- (maxPieces-1));
+            }
 
             // Instantiate the sequence piece
-            GameObject piecePrefab;
-            if (arrow)
-            {
-                piecePrefab = arrowPrefab;
-            }
-            else
-            {
-                int sequencePieceIndex = i / 2; // Divide by 2 since there's an arrow between each sequence piece
-                piecePrefab = sequencePiecePrefabs[sequencePieceIndex];
-            }
-
-            GameObject piece = Instantiate(piecePrefab, transform);
+            GameObject piece = Instantiate(arrow ? arrowPrefab : sequencePiecePrefabs[pieceIndex], transform);
 
             // Set its local position relative to the popup
-            piece.transform.localPosition = new Vector3(xPos, 0f, 0f);
+            piece.transform.localPosition = new Vector3(xPos, yPos, 0f);
 
             // Animate the piece
             StartCoroutine(AnimatePiece(piece.transform, xPos + pieceSpacing));
+
+            // Wait for the animation to finish before instantiating the next piece
+            yield return new WaitForSeconds(animationDuration / sequencePiecePrefabs.Length);
+
+            if (!arrow)
+                pieceIndex++;
 
             arrow = !arrow;
         }
