@@ -13,6 +13,11 @@ public class GameBarDecrease : MonoBehaviour
 
     void Start()
     {
+        GameManager.Get().OnStageBegin += InitTime;
+    }
+
+    void InitTime()
+    {
         maxTime = GameManager.Get().MaxTime;
         decreaseDuration = maxTime;
         startTime = Time.time;

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 429402828992742602}
   - component: {fileID: 429402828992742644}
   - component: {fileID: 3281165938617844344}
+  - component: {fileID: 6530392842799211038}
   m_Layer: 5
   m_Name: SequencePopup
   m_TagString: Untagged
@@ -107,5 +108,18 @@ MonoBehaviour:
   sequencePiecePrefab: {fileID: 429402828992742600, guid: 45780bfeed529ba4087c520929fef2c6, type: 3}
   arrowPrefab: {fileID: 429402828992742600, guid: 94455f97b86664b4f822d0b2e8994215, type: 3}
   animationDuration: 0.3
+  fadeDuration: 0.3
   pieceSpacing: 80
   maxPieces: 10
+--- !u!225 &6530392842799211038
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429402828992742600}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
