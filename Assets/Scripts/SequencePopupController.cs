@@ -119,7 +119,9 @@ public class SequencePopupController : MonoBehaviour
             // Set its texture to currentTexture if it's not an arrow piece
             if (!arrow)
             {
-                Image currentImage = currentCharacter.bodyParts[pieceIndex].bodyImage;
+                int correctSequenceIndex = currentCharacter.sequenceOrder[pieceIndex];
+                Debug.Log($"piece index {pieceIndex} taking {correctSequenceIndex} from sequence in image {currentCharacter.bodyParts[correctSequenceIndex].bodyNumberIndex}");
+                Image currentImage = currentCharacter.bodyParts[correctSequenceIndex].bodyImage;
                 // Access the Image component of the piece
                 piece.GetComponent<Image>().sprite = currentImage.sprite;
             }
