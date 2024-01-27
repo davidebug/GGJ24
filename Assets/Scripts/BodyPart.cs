@@ -1,14 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public Texture bodyImage;
+    public Image bodyImage;
     // image identification number
     public int bodyNumberIndex;
 
+    private bool IsSelected;
+    private void Awake()
+    {
+        IsSelected = false;  
+        bodyImage = GetComponent<Image>();
+        Assert.IsNotNull(bodyImage);    
+    }
     void Start()
     {
         
@@ -22,22 +32,33 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void OnPointerClick(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        //SetBodyPartState()   
     }
 
     public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        Debug.Log($"Pointer entered on Image {bodyNumberIndex}");
 
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        Debug.Log($"Pointer exited on Image {bodyNumberIndex}");
     }
 
-    public void SetBodyPartState(bool clicked)
+    public void SetBodyPartState(bool select)
     {
-
+        if (select && !IsSelected)
+        {
+            ShowClickedEffect();
+        }
+        
     }
+
+    private void ShowClickedEffect()
+    {
+        bodyImage.color = Color.green;
+    }
+
+    
 }
