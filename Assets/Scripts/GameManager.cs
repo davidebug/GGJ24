@@ -39,7 +39,8 @@ public class GameManager : Manager<GameManager>
     void Start()
     {
         UIManager = UIManager.Get();
-        Assert.IsNotNull(UIManager);    
+        Assert.IsNotNull(UIManager);
+        Assert.IsNotNull(levelDatasSO);
         StartNewGame();
         
     }
