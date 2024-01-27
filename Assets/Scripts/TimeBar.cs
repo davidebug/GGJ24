@@ -10,40 +10,49 @@ public class GameBarDecrease : MonoBehaviour
     private float decreaseDuration = 60f; // Duration over which the bar decreases
 
     private float startTime;
+    private GameState currentState;
 
     void Start()
     {
-        GameManager.Get().OnStageBegin += InitTime;
+        GameManager.Get().OnGameStateChanged += InitTime;
     }
 
-    void InitTime()
+    void InitTime(GameState currentState)
     {
-        maxTime = GameManager.Get().MaxTime;
-        decreaseDuration = maxTime;
-        startTime = Time.time;
+        this.currentState = currentState;
+        if (currentState == GameState.PLAYING)
+        {
+            maxTime = GameManager.Get().MaxTime;
+            decreaseDuration = maxTime;
+            startTime = Time.time;
+        }
     }
 
     void Update()
     {
-        // Calculate the elapsed time since the start
-        float elapsedTime = Time.time - startTime;
-
-        // Calculate the progress (how much of the time has passed)
-        float progress = elapsedTime / decreaseDuration;
-
-        // Ensure progress stays within 0 to 1 range
-        progress = Mathf.Clamp01(progress);
-
-        // Calculate the scale factor based on progress
-        float scaleFactor = 1f - progress;
-
-        // Apply the scale to the green bar only
-        greenBar.localScale = new Vector3(scaleFactor, 1f, 1f);
-
-        // If the time has exceeded the maximum time, you can perform some action here
-        if (elapsedTime >= maxTime)
+        if(currentState == GameState.PLAYING)
         {
-            // Do something when time is up
+            // Calculate the elapsed time since the start
+            float elapsedTime = Time.time - startTime;
+
+            // Calculate the progress (how much of the time has passed)
+            float progress = elapsedTime / decreaseDuration;
+
+            // Ensure progress stays within 0 to 1 range
+            progress = Mathf.Clamp01(progress);
+
+            // Calculate the scale factor based on progress
+            float scaleFactor = 1f - progress;
+
+            // Apply the scale to the green bar only
+            greenBar.localScale = new Vector3(scaleFactor, 1f, 1f);
+
+            // If the time has exceeded the maximum time, you can perform some action here
+            if (elapsedTime >= maxTime)
+            {
+                // Do something when time is up
+            }
         }
+        
     }
 }

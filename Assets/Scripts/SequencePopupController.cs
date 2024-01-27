@@ -23,13 +23,17 @@ public class SequencePopupController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Get().OnStageBegin += ShowAnimateSequence;
+        GameManager.Get().OnGameStateChanged += ShowAnimateSequence;
     }
 
-    public void ShowAnimateSequence()
+    public void ShowAnimateSequence(GameState currentState)
     {
-        currentCharacter = GameManager.Get().currentCharacter;
-        StartCoroutine(AnimateSequencePopup());
+        if(currentState == GameState.SOLUTION)
+        {
+            currentCharacter = GameManager.Get().currentCharacter;
+            StartCoroutine(AnimateSequencePopup());
+        }
+
     }
 
     private IEnumerator AnimateSequencePopup()
@@ -45,6 +49,9 @@ public class SequencePopupController : MonoBehaviour
 
         // Fade out animation
         yield return FadeOut();
+
+        // Start game
+        GameManager.Get().StartTimer();
     }
 
     private IEnumerator FadeIn()
@@ -70,7 +77,8 @@ public class SequencePopupController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        canvasGroup.alpha = 0f; // Ensure alpha is set to 0 at the end
+        canvasGroup.alpha = 0f;
+        // Ensure alpha is set to 0 at the end
     }
 
     private IEnumerator AnimateSequencePieces()
@@ -79,7 +87,8 @@ public class SequencePopupController : MonoBehaviour
         float totalWidth = currentCharacter.bodyParts.Length * (sequencePiecePrefab.transform.localScale.x + pieceSpacing);
 
         // Calculate the initial x position for the first piece
-        float initialX = -totalWidth / 1.8f;
+        float divider = (currentCharacter.bodyParts.Length > (maxPieces / 2)) ? 1.8f : 1f;
+        float initialX = -totalWidth / divider;
 
         bool arrow = false;
         int pieceIndex = 0;
