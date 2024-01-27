@@ -9,16 +9,16 @@ public class SequenceBar : MonoBehaviour
     public GameObject CorrectTryAsset;
     public GameObject EmptyTryAsset;
 
-    public int SequenceLength;
-    public int CurrentCorrectNumber;
+    private int SequenceLength;
+    private int CurrentCorrectNumber;
 
     public float TrySpacing = 20f; // Adjust this value as needed for spacing
 
     // Start is called before the first frame update
     void Start()
     {
-        //SequenceLength = GameManager.Get().TotalSequenceLength;
-        //CurrentCorrectNumber = GameManager.Get().CurrentCorrectNumber;
+        SequenceLength = GameManager.Get().TotalSequenceLength;
+        CurrentCorrectNumber = GameManager.Get().CurrentCorrectNumber;
 
         UpdateSequence();
     }
