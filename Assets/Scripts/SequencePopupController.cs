@@ -18,12 +18,12 @@ public class SequencePopupController : MonoBehaviour
 
     void OnEnable()
     {
-
+        GameManager.Get().OnGameStateChanged += ShowAnimateSequence;
     }
 
     private void Start()
     {
-        GameManager.Get().OnGameStateChanged += ShowAnimateSequence;
+        
     }
 
     public void ShowAnimateSequence(GameState currentState)
