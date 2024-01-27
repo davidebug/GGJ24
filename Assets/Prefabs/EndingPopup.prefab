@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoseText: {fileID: 8475008335620991417}
   Buttons: {fileID: 5231376682832068980}
-  NextChar: {fileID: 0}
+  NextChar: {fileID: 858931727957357993}
 --- !u!225 &6530392842799211038
 CanvasGroup:
   m_ObjectHideFlags: 0

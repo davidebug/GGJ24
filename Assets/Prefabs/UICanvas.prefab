@@ -197,7 +197,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2d1867032cd1dac458313d2867242920, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6aa5879eab9a4d94fa2cc2694872192d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -834,6 +834,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeBar
       objectReference: {fileID: 0}
+    - target: {fileID: 429402828992742602, guid: 0dd189fae095356478117eb5640ee991, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ca34ae4fc63d60f408d04ec15cba24c7, type: 3}
     - target: {fileID: 429402828992742603, guid: 0dd189fae095356478117eb5640ee991, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -860,11 +864,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429402828992742603, guid: 0dd189fae095356478117eb5640ee991, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1103.3774
+      value: 1369.1711
       objectReference: {fileID: 0}
     - target: {fileID: 429402828992742603, guid: 0dd189fae095356478117eb5640ee991, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 71.4242
+      value: 98.8609
       objectReference: {fileID: 0}
     - target: {fileID: 429402828992742603, guid: 0dd189fae095356478117eb5640ee991, type: 3}
       propertyPath: m_LocalPosition.x
@@ -896,11 +900,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429402828992742603, guid: 0dd189fae095356478117eb5640ee991, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000045776
+      value: -0.000030518
       objectReference: {fileID: 0}
     - target: {fileID: 429402828992742603, guid: 0dd189fae095356478117eb5640ee991, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -279
+      value: -407
       objectReference: {fileID: 0}
     - target: {fileID: 429402828992742603, guid: 0dd189fae095356478117eb5640ee991, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -930,6 +934,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.31869888
       objectReference: {fileID: 0}
+    - target: {fileID: 429402830622059995, guid: 0dd189fae095356478117eb5640ee991, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5793e506cb1f4ad4bac6974931eea5b5, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 429402829072815306, guid: 0dd189fae095356478117eb5640ee991, type: 3}
