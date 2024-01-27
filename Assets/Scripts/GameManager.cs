@@ -15,7 +15,7 @@ public class GameManager : Manager<GameManager>
     //public LevelDataAsset dataAsset;
 
     public GameState gameState;
-    public LevelDataAssetScriptableObject levelDataSO;
+    public LevelDataAssetScriptableObject[] levelDatasSO;
 
     public int levelIndex = 1;
 
