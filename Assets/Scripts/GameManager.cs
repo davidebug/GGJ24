@@ -8,6 +8,7 @@ using UnityEngine.Rendering;
 public enum GameState
 {
     START_MENU,
+    SOLUTION,
     PLAYING,
     GAME_OVER,
     VICTORY
@@ -23,6 +24,8 @@ public class GameManager : Manager<GameManager>
 
     public Action OnCorrectSequence;
     public Action OnWrongSequence;
+    public Action<GameState> OnGameStateChanged;
+
     public Action OnStageBegin;
     public Action<bool> OnGameOver;
 
@@ -49,11 +52,10 @@ public class GameManager : Manager<GameManager>
 
     public void initGameValues()
     {
-
-        gameState = GameState.PLAYING;
         CurrentTime = 0;
         LoadCurrentCharacter(levelIndex);
-        OnStageBegin?.Invoke();
+        gameState = GameState.SOLUTION;
+        OnGameStateChanged?.Invoke(gameState);
         //UIManager.Instance.ClearCardsUI();
         //UIManager.Instance.disableGameEndedScreen();
 
@@ -126,7 +128,14 @@ public class GameManager : Manager<GameManager>
 
     }
 
-  
+    public void StartTimer()
+    {
+        gameState = GameState.PLAYING;
+        OnGameStateChanged?.Invoke(gameState);
+
+    }
+
+
 
     //private IEnumerator PlayEnemyTurn()
     //{
