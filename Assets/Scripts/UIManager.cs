@@ -8,7 +8,15 @@ using UnityEngine.UI;
 
 public class UIManager : Manager<UIManager>
 {
+    public RectTransform bodyRectTransformPlaceHolder;
 
+    public void Start()
+    {
+        if(bodyRectTransformPlaceHolder == null)
+        {
+            bodyRectTransformPlaceHolder = GetComponent<RectTransform>();
+        }
+    }
     //const string GAME_VICTORY_TEXT = "PLAYER WINS THE MATCH!";
     //const string GAME_OVER_TEXT = "GAME OVER!";
 
