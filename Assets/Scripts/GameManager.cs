@@ -149,12 +149,11 @@ public class GameManager : Manager<GameManager>
     {
         if (victory)
         {
-            gameState = GameState.VICTORY;
-            OnGameStateChanged?.Invoke(gameState);
+
             currentCharacter.MakeSmile();
 
-            WaitForThreeSeconds();
-            levelIndex++;
+            StartCoroutine(WaitForVictory());
+
         }
         else
         {
@@ -172,13 +171,14 @@ public class GameManager : Manager<GameManager>
         CurrentTime = 0f;
     }
 
-    IEnumerator WaitForThreeSeconds()
+    IEnumerator WaitForVictory()
     {
         // Wait for 3 seconds
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
 
-        // Code here will execute after 3 seconds
-        Debug.Log("Three seconds have passed.");
+        gameState = GameState.VICTORY;
+        OnGameStateChanged?.Invoke(gameState);
+        levelIndex++;
     }
     public void NextStage()
     {

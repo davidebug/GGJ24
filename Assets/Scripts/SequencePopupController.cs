@@ -115,7 +115,7 @@ public class SequencePopupController : MonoBehaviour
         float totalWidth = currentCharacter.bodyParts.Length * (sequencePiecePrefab.transform.localScale.x + pieceSpacing);
 
         // Calculate the initial x position for the first piece
-        float divider = (currentCharacter.bodyParts.Length > (maxPieces / 2)) ? 1.8f : 1f;
+        float divider = (currentCharacter.bodyParts.Length > (maxPieces / 2)) ? 1.2f : 1f;
         float initialX = -totalWidth / divider;
 
         bool arrow = false;
@@ -149,7 +149,7 @@ public class SequencePopupController : MonoBehaviour
                 // Start a new row
                 currentX = initialX;
                 // Move the y position down for the new row
-                yPos = sequencePiecePrefab.transform.localScale.y - 20 - pieceSpacing;
+                yPos = sequencePiecePrefab.transform.localScale.y - pieceSpacing;
                 // Update xPos for the new row
                 xPos = initialX + (sequencePiecePrefab.transform.localScale.x + pieceSpacing) * (i - (maxPieces - 1));
             }
