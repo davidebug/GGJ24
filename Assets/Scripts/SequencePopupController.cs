@@ -8,6 +8,7 @@ public class SequencePopupController : MonoBehaviour
 {
     public GameObject sequencePiecePrefab; // Prefab of the sequence pieces
     public GameObject arrowPrefab; // Prefab of the arrow separator
+    public GameObject startingPosition;
 
     public float animationDuration = 0.5f; // Duration of the animation in seconds
     public float fadeDuration = 0.3f; // Duration of the fade animation in seconds
@@ -111,12 +112,8 @@ public class SequencePopupController : MonoBehaviour
 
     private IEnumerator AnimateSequencePieces()
     {
-        // Calculate the total width of all pieces and separators
-        float totalWidth = currentCharacter.bodyParts.Length * (sequencePiecePrefab.transform.localScale.x + pieceSpacing);
 
-        // Calculate the initial x position for the first piece
-        float divider = (currentCharacter.bodyParts.Length > (maxPieces / 2)) ? 1.2f : 1f;
-        float initialX = -totalWidth / divider;
+        float initialX = startingPosition.transform.localPosition.x ;
 
         bool arrow = false;
         int pieceIndex = 0;
