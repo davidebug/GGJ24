@@ -6,8 +6,20 @@ using UnityEngine;
 [System.Serializable]
 public class AudioAssetScriptableObject : ScriptableObject
 {
-    public AudioClip mainSongTheme;
+    public AudioClip gamePlayMusic_1;
+    public AudioClip gamePlayMusic_2;
+
     public AudioClip mainMenuSongTheme;
     public AudioClip gameOverSong;
+
+
+    public AudioClip GetGameplayAudioClip(int i)
+    {
+        if(i == 0)
+        {
+            return gamePlayMusic_1;
+        }
+        return gamePlayMusic_2;
+    }
 
 }
