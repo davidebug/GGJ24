@@ -416,6 +416,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5495074862129901217, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495074862129901217, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 602.6478
+      objectReference: {fileID: 0}
+    - target: {fileID: 5495074862129901217, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -418.76758
+      objectReference: {fileID: 0}
     - target: {fileID: 6175549222747687718, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
       propertyPath: m_Name
       value: MainMenuPanel
