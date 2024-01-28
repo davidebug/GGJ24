@@ -66,4 +66,9 @@ public class AudioManager : Manager<AudioManager>
     {
         PlayingWithSecondAudioSource(AudioAssetSO.GetRandomAudioLaugh(levelIndex));   
     }
+
+    public void PlayWoorp()
+    {
+        PlayingWithSecondAudioSource(AudioAssetSO.GetRandomWoorp());    
+    }
 }

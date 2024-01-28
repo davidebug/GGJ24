@@ -18,6 +18,8 @@ public class AudioAssetScriptableObject : ScriptableObject
     public AudioClip SFX_feather;
 
     public AudioClip[] SFX_Laughes;
+
+    public AudioClip[] SFX_Woorps;
     public AudioClip GetGameplayAudioClip(int i)
     {
         if(i == 0)
@@ -32,5 +34,12 @@ public class AudioAssetScriptableObject : ScriptableObject
         int i = Random.Range(levelIndex, levelIndex+2);
         i = Mathf.Clamp(i,0, SFX_Laughes.Length);   
         return SFX_Laughes[i];
+    }
+
+    public AudioClip GetRandomWoorp()
+    {
+        int i = Random.Range(0,SFX_Woorps.Length);
+
+        return SFX_Woorps[i];
     }
 }

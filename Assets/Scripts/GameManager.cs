@@ -217,6 +217,7 @@ public class GameManager : Manager<GameManager>
 
     internal void UnselectEverything()
     {
+        AudioManager.Get().PlayWoorp();
         OnWrongSequence?.Invoke();
     }
 }
