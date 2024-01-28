@@ -570,19 +570,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1827746868864609738, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 787.8627
+      value: 265.2756
       objectReference: {fileID: 0}
     - target: {fileID: 1827746868864609738, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 661.5751
+      value: 261.6825
       objectReference: {fileID: 0}
     - target: {fileID: 1827746868864609738, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -5.3739
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1827746868864609738, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 25.5261
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2353634243080538373, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -693,6 +693,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pointer
       objectReference: {fileID: 0}
+    - target: {fileID: 4711059470900925283, guid: eaad5418eab5a45469bac625c147f46a, type: 3}
+      propertyPath: cursorTexture2
+      value: 
+      objectReference: {fileID: 2800000, guid: 2e2a281fd7d5cbd47836afd62906fe0f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

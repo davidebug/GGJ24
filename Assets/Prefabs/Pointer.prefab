@@ -45,5 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorTexture: {fileID: 2800000, guid: 5ec28770079e05d488ff650fda9e66cf, type: 3}
+  cursorTexture2: {fileID: 2800000, guid: 355cf43ae39f87340a86d654655b4561, type: 3}
   cursorMode: 1
   hotSpot: {x: 0, y: 0}
+  rotateCursor: 0
