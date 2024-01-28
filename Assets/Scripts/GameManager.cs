@@ -158,6 +158,7 @@ public class GameManager : Manager<GameManager>
         }
         else
         {
+            levelIndex = 0;
             gameState = GameState.GAME_OVER;
             OnGameStateChanged?.Invoke(gameState);
         }
