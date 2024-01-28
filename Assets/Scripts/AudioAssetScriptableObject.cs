@@ -12,6 +12,11 @@ public class AudioAssetScriptableObject : ScriptableObject
     public AudioClip mainMenuSongTheme;
     public AudioClip gameOverSong;
 
+    public AudioClip SFX_partCorrect;
+    public AudioClip SFX_partIncorrect;
+
+    public AudioClip SFX_feather;
+
 
     public AudioClip GetGameplayAudioClip(int i)
     {
