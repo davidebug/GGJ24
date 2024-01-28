@@ -336,42 +336,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1570574459}
     m_Modifications:
-    - target: {fileID: 732537252002848273, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 732537252002848273, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 732537252002848273, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7852697382104027354, guid: 3d6b5eff9da86a44ca5fb4eda9bda207, type: 3}
-    - target: {fileID: 732537252002848273, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 732537252002848273, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartNewGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 732537252002848273, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 732537252002848273, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4373798073955098697, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -885.2162
-      objectReference: {fileID: 0}
-    - target: {fileID: 4373798073955098697, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -357.3919
-      objectReference: {fileID: 0}
     - target: {fileID: 4539528793751547860, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -451,14 +415,6 @@ PrefabInstance:
     - target: {fileID: 4539528793751547860, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5495074862129901217, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -885.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 5495074862129901217, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -357.39
       objectReference: {fileID: 0}
     - target: {fileID: 6175549222747687718, guid: 09c30e37cf9fa3e42ac4e7d7f5cba491, type: 3}
       propertyPath: m_Name
