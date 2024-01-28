@@ -159,6 +159,12 @@ public class GameManager : Manager<GameManager>
             OnGameStateChanged?.Invoke(gameState);
         }
 
+        // WinScreen
+        if (levelIndex > levelDatasSO.characters.Length)
+        {
+            
+        }
+
         CurrentTime = 0f;
     }
 
