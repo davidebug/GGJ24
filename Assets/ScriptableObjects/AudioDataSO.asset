@@ -16,3 +16,30 @@ MonoBehaviour:
   gamePlayMusic_2: {fileID: 8300000, guid: 7305486b8c4a05a47b3635d3750642e6, type: 3}
   mainMenuSongTheme: {fileID: 8300000, guid: 6c740ef29e8290a4b99a9c1327ab9d53, type: 3}
   gameOverSong: {fileID: 8300000, guid: 1d28b33bb80b2c242a852b4c0c6939c2, type: 3}
+  SFX_partCorrect: {fileID: 8300000, guid: 99d49cdddbdb5b846857725de62a1e8f, type: 3}
+  SFX_partIncorrect: {fileID: 8300000, guid: b88c2aff7947fe84484ae988add8db69, type: 3}
+  SFX_feather: {fileID: 8300000, guid: 1546b0542ec9d2a448267862c356af4e, type: 3}
+  SFX_Laughes:
+  - {fileID: 8300000, guid: 0548c204882fb754da722151395557fc, type: 3}
+  - {fileID: 8300000, guid: 1a7aef31a021ba549b079f395305f00d, type: 3}
+  - {fileID: 8300000, guid: abeb5db509d524745909d5960dbb3a42, type: 3}
+  - {fileID: 8300000, guid: 9946de6c5d94ed148a503bb42f53b79b, type: 3}
+  - {fileID: 8300000, guid: 66f9613be9bbfc946b5319c4ff35d060, type: 3}
+  - {fileID: 8300000, guid: f5caf1a25a7bf6b40aee1016eb6493a8, type: 3}
+  - {fileID: 8300000, guid: d99243e08290d104c84b84cd44451401, type: 3}
+  - {fileID: 8300000, guid: 29828d818a777c04aa0dcdacbcd59ac7, type: 3}
+  - {fileID: 8300000, guid: af68a1c38f0c9d9439a8e42fa2dbdd01, type: 3}
+  - {fileID: 8300000, guid: 21865f1228e5d954eaa989f754ac1fcb, type: 3}
+  - {fileID: 8300000, guid: d6db2f429e59e034496c3259c09cd5ec, type: 3}
+  - {fileID: 8300000, guid: 21c457b23f02c614c96b8a8bb8aa9964, type: 3}
+  - {fileID: 8300000, guid: 0c17008c1fed1104c8baed0452a13a33, type: 3}
+  - {fileID: 8300000, guid: b2e8a0f552e7ece4fa9ec3d6bb74828f, type: 3}
+  - {fileID: 8300000, guid: b6db57475213c644b83675d9992fa91c, type: 3}
+  - {fileID: 8300000, guid: 5e0979edd28d348419357080a1eee8aa, type: 3}
+  - {fileID: 8300000, guid: 95e469fc92c58ce4185b602ec860cd29, type: 3}
+  - {fileID: 8300000, guid: 70f8633b157119f46a86320bc18dfadb, type: 3}
+  SFX_Woorps:
+  - {fileID: 8300000, guid: 121cc3577e492374ead26ecacc24c28e, type: 3}
+  - {fileID: 8300000, guid: 9afa41fe3a9d9e9418a8df212881072d, type: 3}
+  - {fileID: 8300000, guid: 4b3c682d0490a6041b92b2a319cd428c, type: 3}
+  - {fileID: 8300000, guid: d6110646bab129340b3dca035e0c977e, type: 3}

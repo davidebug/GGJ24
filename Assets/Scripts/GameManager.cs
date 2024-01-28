@@ -12,7 +12,8 @@ public enum GameState
     SOLUTION,
     PLAYING,
     GAME_OVER,
-    VICTORY
+    VICTORY,
+    WON_GAME
 }
 public class GameManager : Manager<GameManager> 
 {
@@ -139,11 +140,17 @@ public class GameManager : Manager<GameManager>
 
         CurrentCorrectNumber = 0;
         OnWrongSequence?.Invoke();
-
+        AudioManager.Get().PlayWoorp();
         return false;
     }
 
    
+
+    public void WinGame()
+    {
+        gameState = GameState.WON_GAME;
+        SceneManager.LoadScene("WinScene");
+    }
 
     public void EndGame(bool victory)
     {
@@ -151,7 +158,7 @@ public class GameManager : Manager<GameManager>
         {
 
             currentCharacter.MakeSmile();
-
+            AudioManager.Get().PlayLaugh(levelIndex);
             StartCoroutine(WaitForVictory());
 
         }
@@ -162,10 +169,9 @@ public class GameManager : Manager<GameManager>
             OnGameStateChanged?.Invoke(gameState);
         }
 
-        // WinScreen
         if (levelIndex > levelDatasSO.characters.Length)
         {
-            
+            WinGame();
         }
 
         CurrentTime = 0f;
@@ -201,11 +207,17 @@ public class GameManager : Manager<GameManager>
                 EndGame(false);
             }
 
+            // Cheat modet, win the game
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.W))
+            {
+                WinGame();
+            }
         }
     }
 
     internal void UnselectEverything()
     {
         OnWrongSequence?.Invoke();
+       
     }
 }

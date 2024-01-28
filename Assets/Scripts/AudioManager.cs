@@ -9,7 +9,7 @@ public class AudioManager : Manager<AudioManager>
     public AudioAssetScriptableObject AudioAssetSO;
     public AudioSource audioSource;
     public AudioSource audioSource2;
-   
+
     // Start is called before the first frame update
     int nChanges = 0;
     public void Awake()
@@ -52,5 +52,23 @@ public class AudioManager : Manager<AudioManager>
     //    yield return;
     //}
 
-   
+    public void PlayingWithSecondAudioSource(AudioClip clip)
+    {
+        if (audioSource2.isPlaying)
+        {
+            audioSource2.Stop();    
+        }
+
+        audioSource.PlayOneShot(clip);
+    }
+
+    public void PlayLaugh(int levelIndex)
+    {
+        PlayingWithSecondAudioSource(AudioAssetSO.GetRandomAudioLaugh(levelIndex));   
+    }
+
+    public void PlayWoorp()
+    {
+        PlayingWithSecondAudioSource(AudioAssetSO.GetRandomWoorp());    
+    }
 }
