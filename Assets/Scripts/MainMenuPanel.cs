@@ -9,10 +9,14 @@ public class MainMenuPanel : MonoBehaviour
 {
     public Button StartButton;
     public Button QuitGame;
+    public AudioSource audioSource;
 
+    public AudioAssetScriptableObject AudioAssetSO;
   
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
         StartButton.onClick.AddListener(LoadGame);
         QuitGame.onClick.AddListener(QuitApplication);   
     }
@@ -26,4 +30,6 @@ public class MainMenuPanel : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+
+   
 }

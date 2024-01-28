@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9936e761332986d41bc089d2bc1852db, type: 3}
   m_Name: AudioDataSO
   m_EditorClassIdentifier: 
-  mainSongTheme: {fileID: 0}
-  mainMenuSongTheme: {fileID: 0}
-  gameOverSong: {fileID: 0}
+  gamePlayMusic_1: {fileID: 8300000, guid: 6c740ef29e8290a4b99a9c1327ab9d53, type: 3}
+  gamePlayMusic_2: {fileID: 8300000, guid: 7305486b8c4a05a47b3635d3750642e6, type: 3}
+  mainMenuSongTheme: {fileID: 8300000, guid: 6c740ef29e8290a4b99a9c1327ab9d53, type: 3}
+  gameOverSong: {fileID: 8300000, guid: 1d28b33bb80b2c242a852b4c0c6939c2, type: 3}
