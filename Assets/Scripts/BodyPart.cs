@@ -39,7 +39,13 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     }
 
-
+    private void OnDestroy()
+    {
+        if(gameManager != null) 
+        { 
+            gameManager.OnWrongSequence -= Unselect;
+        }
+    }
     public void OnPointerClick(UnityEngine.EventSystems.PointerEventData eventData)
     {
         SelectBodyPart(); 
