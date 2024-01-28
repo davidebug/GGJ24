@@ -151,6 +151,7 @@ public class GameManager : Manager<GameManager>
         {
             gameState = GameState.VICTORY;
             OnGameStateChanged?.Invoke(gameState);
+            currentCharacter.MakeSmile();
             levelIndex++;
         }
         else
