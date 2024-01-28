@@ -34,10 +34,11 @@ public class AudioManager : Manager<AudioManager>
             case GameState.SOLUTION:
                 if (AudioAssetSO.mainMenuSongTheme)
                 {
-                    int nAudioClip = nChanges % 2;
+                    //int nAudioClip = nChanges % 2;
+                    // original idea was to fade from one song to another
                     audioSource.Stop();
-                    audioSource.PlayOneShot(AudioAssetSO.GetGameplayAudioClip(nAudioClip));
-                    nChanges++;
+                    audioSource.PlayOneShot(AudioAssetSO.gamePlayMusic_2);
+                    //nChanges++;
                 }
                 break;
             default: break;
@@ -51,9 +52,5 @@ public class AudioManager : Manager<AudioManager>
     //    yield return;
     //}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

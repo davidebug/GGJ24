@@ -14,24 +14,30 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private Color original;
     private bool IsSelected;
     private bool IsShowingHoveringEffect;
-    private GameManager gameManager;    
+    private GameManager gameManager;
+    private AudioSource audioSource;
     private void Awake()
     {
-        IsSelected = false;  
+        IsSelected = false;
         bodyImage = GetComponent<Image>();
-        Assert.IsNotNull(bodyImage);    
+        Assert.IsNotNull(bodyImage);
         original = bodyImage.color;
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     private void Start()
     {
-        
+
         if (gameManager == null)
         {
             gameManager = GameManager.Get();
         }
 
         gameManager.OnWrongSequence += Unselect;
+       
     }
     private void OnEnable()
     {
@@ -41,14 +47,14 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     private void OnDestroy()
     {
-        if(gameManager != null) 
-        { 
+        if (gameManager != null)
+        {
             gameManager.OnWrongSequence -= Unselect;
         }
     }
     public void OnPointerClick(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        SelectBodyPart(); 
+        SelectBodyPart();
     }
 
     public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData eventData)
@@ -70,7 +76,8 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             if (gameManager.TryToSelectBodyPart(bodyNumberIndex))
             {
                 ShowClickedEffect(true);
-                IsSelected=true;
+                IsSelected = true;
+                PlayAudio(AudioManager.Get().AudioAssetSO.SFX_partCorrect);
             }
 
         }
@@ -79,8 +86,9 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             gameManager.UnselectEverything();
             IsSelected = false;
             ShowClickedEffect(false);
+            PlayAudio(AudioManager.Get().AudioAssetSO.SFX_partIncorrect);
         }
-        
+
     }
 
     private void ShowClickedEffect(bool select)
@@ -92,7 +100,7 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
         else
         {
-            bodyImage.color = Color.red;    
+            bodyImage.color = Color.red;
         }
     }
 
@@ -101,7 +109,7 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         IsSelected = false;
         bodyImage.color = original;
     }
-    
+
     private void ShowHoverEffect(bool isPointerHovering)
     {
         if (isPointerHovering == IsShowingHoveringEffect || IsSelected)
@@ -118,4 +126,16 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             IsShowingHoveringEffect = false;
         }
     }
+
+    private void PlayAudio(AudioClip audioClip)
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+
+         audioSource.PlayOneShot(audioClip);
+    }
+
 }
+
