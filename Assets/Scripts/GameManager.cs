@@ -140,7 +140,7 @@ public class GameManager : Manager<GameManager>
 
         CurrentCorrectNumber = 0;
         OnWrongSequence?.Invoke();
-
+        AudioManager.Get().PlayWoorp();
         return false;
     }
 
@@ -217,7 +217,7 @@ public class GameManager : Manager<GameManager>
 
     internal void UnselectEverything()
     {
-        AudioManager.Get().PlayWoorp();
         OnWrongSequence?.Invoke();
+       
     }
 }
