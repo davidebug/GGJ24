@@ -15,7 +15,8 @@ public class LevelDataAssetScriptableObject : ScriptableObject
     {
         int maxCharacters = characters.Length;
         index = Mathf.Clamp(index, 0, maxCharacters);
-        return characters[index];   
+
+        return index < 5 ?  characters[index] : null;   
     }
 
 }

@@ -76,6 +76,8 @@ public class GameManager : Manager<GameManager>
 
     public void LoadStage(int levelIndex)
     {
+        if (levelIndex >= 5)
+            return;
 
         if(currentCharacter != null)
         {

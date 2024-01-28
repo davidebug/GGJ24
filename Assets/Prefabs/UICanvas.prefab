@@ -1116,6 +1116,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6457101129650521389, guid: 0b6aa2ecfb34dcb4baed2060efe2793e, type: 3}
+      propertyPath: MainMenu2
+      value: 
+      objectReference: {fileID: 4310166326277398151}
     - target: {fileID: 6756871061420490451, guid: 0b6aa2ecfb34dcb4baed2060efe2793e, type: 3}
       propertyPath: m_SizeDelta.x
       value: 314.0871
@@ -1160,6 +1164,11 @@ PrefabInstance:
 --- !u!224 &3440805900820669120 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 429402828992742603, guid: 0b6aa2ecfb34dcb4baed2060efe2793e, type: 3}
+  m_PrefabInstance: {fileID: 3041540694554633739}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4310166326277398151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1289560381308516492, guid: 0b6aa2ecfb34dcb4baed2060efe2793e, type: 3}
   m_PrefabInstance: {fileID: 3041540694554633739}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7349478784174679940

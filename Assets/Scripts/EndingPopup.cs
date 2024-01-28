@@ -8,6 +8,7 @@ public class EndingPopup : MonoBehaviour
     public GameObject LoseText;
     public GameObject Buttons;
     public GameObject NextChar;
+    public GameObject MainMenu2;
 
     public Sprite[] levelProgressSprites;
     public Image winImage;
@@ -55,21 +56,27 @@ public class EndingPopup : MonoBehaviour
     {
         if (currentState == GameState.VICTORY)
         {
+            
             this.gameObject.SetActive(true);
             // Hide the popup after victoryPopupDuration seconds
             winImage.sprite = levelProgressSprites[GameManager.Get().levelIndex];
             if (!(GameManager.Get().levelIndex == 4))
             {
                 StartCoroutine(HideAfterDelay(victoryPopupDuration));
-
+                MainMenu2.SetActive(false);
                 LoseText.SetActive(false);
                 Buttons.SetActive(false);
                 NextChar.SetActive(true);
+            }
+            else
+            {
+                MainMenu2.SetActive(true);
             }
 
         }
         else if (currentState == GameState.GAME_OVER)
         {
+            MainMenu2.SetActive(false);
             this.gameObject.SetActive(true);
             LoseText.SetActive(true);
             Buttons.SetActive(true);
@@ -77,6 +84,7 @@ public class EndingPopup : MonoBehaviour
         }
         else
         {
+            MainMenu2.SetActive(false);
             // Hide the popup immediately if it's not victory or game over
             gameObject.SetActive(false);
         }
