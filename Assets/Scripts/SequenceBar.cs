@@ -14,7 +14,7 @@ public class SequenceBar : MonoBehaviour
     private int CurrentCorrectNumber;
 
     public float TrySpacing = 100f; // Adjust this value as needed for spacing
-    public bool enabled = false;
+    public bool enabledBar = false;
 
     void OnEnable()
     {
@@ -23,7 +23,7 @@ public class SequenceBar : MonoBehaviour
             GameManager.Get().OnWrongSequence += UpdateSequence;
             GameManager.Get().OnCorrectSequence += UpdateSequence;
             GameManager.Get().OnGameStateChanged += InitSequence;
-            enabled = true;
+            enabledBar = true;
         }
 
     }
@@ -31,7 +31,7 @@ public class SequenceBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(!enabled)
+        if(!enabledBar)
         {
             GameManager.Get().OnWrongSequence += UpdateSequence;
             GameManager.Get().OnCorrectSequence += UpdateSequence;
@@ -83,6 +83,8 @@ public class SequenceBar : MonoBehaviour
             currentTries.Add(instantiatedTry);
             instantiatedTry.transform.localPosition = new Vector3(currentX, 0f, 0f);
             currentX += TrySpacing;
+            
         }
+
     }
 }
