@@ -32,18 +32,19 @@ public class Character : MonoBehaviour
         smile.SetActive(false);
     }
 
-    void Update()
-    {
+    //void Update()
+    //{
 
-    }
+    //}
 
     public void FadeAndDisable(GameState gameState)
     {
-        if(gameState != GameState.PLAYING)
+        GameManager.Get().OnGameStateChanged -= FadeAndDisable;
+        if (gameState == GameState.VICTORY)
         {
             StartCoroutine(FadeAndDisableCoroutine());
         }
-        
+
     }
 
     public void MakeSmile()
@@ -87,6 +88,9 @@ public class Character : MonoBehaviour
         }
 
         // Disable the character
-        gameObject.SetActive(false);
+        GameManager.Get().NextStage();
+        
+        Destroy(gameObject);
+
     }
 }

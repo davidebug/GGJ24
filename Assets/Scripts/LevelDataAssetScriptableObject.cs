@@ -13,6 +13,8 @@ public class LevelDataAssetScriptableObject : ScriptableObject
 
     public Character GetCharacter(int index)
     {
+        int maxCharacters = characters.Length;
+        index = Mathf.Clamp(index, 0, maxCharacters);
         return characters[index];   
     }
 
