@@ -143,28 +143,7 @@ public class GameManager : Manager<GameManager>
         return false;
     }
 
-    //    //}
-    //}
-
-    //private IEnumerator NextTurn()
-    //{
-
-    //    //StartCoroutine(UIManager.Instance.changeTurn(gameState == GameState.PLAYER_TURN));
-    //    //yield return new WaitForSeconds(2);
-
-    //    //if (gameState == GameState.PLAYER_TURN)
-    //    //{
-    //    //    gameState = GameState.ENEMY_TURN;
-    //    //    StartCoroutine(PlayEnemyTurn());
-    //    //}
-    //    //else
-    //    //{
-    //    //    gameState = GameState.PLAYER_TURN;
-    //    //    myPlayer.onTurnStart(cardsPerTurn);
-    //    //}
-
-
-    //}
+   
 
     public void EndGame(bool victory)
     {
@@ -188,25 +167,6 @@ public class GameManager : Manager<GameManager>
     {
         LoadStage(levelIndex);
     }
-
-
-
-
-    //private IEnumerator PlayEnemyTurn()
-    //{
-    //    Card cardToPlay = DrawRandomcard();
-    //    enemyPlayer.PlayCard(cardToPlay, myPlayer);
-    //    yield return UIManager.Instance.showEventNotification(false, cardToPlay);
-
-    //    if (myPlayer.healthPoints <= 0)
-    //        callGameEnded(false);
-    //    else
-    //    {
-    //        turnCount++;
-    //        StartCoroutine(NextTurn());
-    //    }
-
-    //}
 
     public void QuitGame()
     {
