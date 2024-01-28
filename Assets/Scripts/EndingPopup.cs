@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndingPopup : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class EndingPopup : MonoBehaviour
     public GameObject Buttons;
     public GameObject NextChar;
 
+    public Sprite[] levelProgressSprites;
+    public Image winImage;
     public float animationDuration = 0.5f;
     public float victoryPopupDuration = 4f;
 
@@ -54,10 +57,16 @@ public class EndingPopup : MonoBehaviour
         {
             this.gameObject.SetActive(true);
             // Hide the popup after victoryPopupDuration seconds
-            StartCoroutine(HideAfterDelay(victoryPopupDuration));
-            LoseText.SetActive(false);
-            Buttons.SetActive(false);
-            NextChar.SetActive(true);
+            winImage.sprite = levelProgressSprites[GameManager.Get().levelIndex];
+            if (!(GameManager.Get().levelIndex == 4))
+            {
+                StartCoroutine(HideAfterDelay(victoryPopupDuration));
+
+                LoseText.SetActive(false);
+                Buttons.SetActive(false);
+                NextChar.SetActive(true);
+            }
+
         }
         else if (currentState == GameState.GAME_OVER)
         {

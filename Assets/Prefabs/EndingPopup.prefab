@@ -111,8 +111,15 @@ MonoBehaviour:
   LoseText: {fileID: 8475008335620991417}
   Buttons: {fileID: 5231376682832068980}
   NextChar: {fileID: 858931727957357993}
+  levelProgressSprites:
+  - {fileID: 21300000, guid: ba01f3ff11584c845bf9ed6c2d07bb22, type: 3}
+  - {fileID: 21300000, guid: 306090c7ce5476341a388cdc508314c8, type: 3}
+  - {fileID: 21300000, guid: 51f1a0013d398f746b19ac6345a5f822, type: 3}
+  - {fileID: 21300000, guid: 49ddaf09f8301a748895aa0b43f3a641, type: 3}
+  - {fileID: 21300000, guid: a35cc46cc7a241c428f04260f1f19b35, type: 3}
+  winImage: {fileID: 7730325419496235104}
   animationDuration: 0.5
-  victoryPopupDuration: 4
+  victoryPopupDuration: 10
 --- !u!225 &6530392842799211038
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -274,7 +281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1857610581059484775
 RectTransform:
   m_ObjectHideFlags: 0
@@ -595,8 +602,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.7086, y: 0.0000090599}
+  m_SizeDelta: {x: 546.3531, y: 234.0441}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &369740076162907892
 CanvasRenderer:
@@ -651,7 +658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6407732230748071455
 RectTransform:
   m_ObjectHideFlags: 0
