@@ -12,7 +12,8 @@ public enum GameState
     SOLUTION,
     PLAYING,
     GAME_OVER,
-    VICTORY
+    VICTORY,
+    WON_GAME
 }
 public class GameManager : Manager<GameManager> 
 {
@@ -145,6 +146,12 @@ public class GameManager : Manager<GameManager>
 
    
 
+    public void WinGame()
+    {
+        gameState = GameState.WON_GAME;
+        SceneManager.LoadScene("WinScene");
+    }
+
     public void EndGame(bool victory)
     {
         if (victory)
@@ -162,10 +169,9 @@ public class GameManager : Manager<GameManager>
             OnGameStateChanged?.Invoke(gameState);
         }
 
-        // WinScreen
         if (levelIndex > levelDatasSO.characters.Length)
         {
-            
+            WinGame();
         }
 
         CurrentTime = 0f;
@@ -201,6 +207,11 @@ public class GameManager : Manager<GameManager>
                 EndGame(false);
             }
 
+            // Cheat modet, win the game
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.W))
+            {
+                WinGame();
+            }
         }
     }
 
