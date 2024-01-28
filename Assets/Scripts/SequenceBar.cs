@@ -13,7 +13,7 @@ public class SequenceBar : MonoBehaviour
     private int SequenceLength;
     private int CurrentCorrectNumber;
 
-    public float TrySpacing = 20f; // Adjust this value as needed for spacing
+    public float TrySpacing = 100f; // Adjust this value as needed for spacing
     public bool enabled = false;
 
     void OnEnable()

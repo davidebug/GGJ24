@@ -568,22 +568,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1827746868864609738, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 265.2756
-      objectReference: {fileID: 0}
-    - target: {fileID: 1827746868864609738, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 261.6825
-      objectReference: {fileID: 0}
-    - target: {fileID: 1827746868864609738, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1827746868864609738, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2353634243080538373, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -592,52 +576,12 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2353634243137871894, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1369.1711
-      objectReference: {fileID: 0}
-    - target: {fileID: 2353634243137871894, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 98.8609
-      objectReference: {fileID: 0}
-    - target: {fileID: 2353634243137871894, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.000030518
-      objectReference: {fileID: 0}
-    - target: {fileID: 2353634243137871894, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -407
-      objectReference: {fileID: 0}
-    - target: {fileID: 3860644388858267540, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6833154565468065023, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_Name
-      value: Sequence
-      objectReference: {fileID: 0}
-    - target: {fileID: 7692951404693684071, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_Name
-      value: Sequence
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220442483093928528, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220442483093928528, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9220442483093928528, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-      propertyPath: m_Color.r
-      value: 1
+    - target: {fileID: 3981410522531180370, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
+      propertyPath: TrySpacing
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5053338701486451208, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-    - {fileID: 9098162616450767883, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-    - {fileID: 6833154565468065023, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
-    - {fileID: 1329803897564393304, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dfaa57bb68463c44979f2435a082cbc, type: 3}
@@ -693,10 +637,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pointer
       objectReference: {fileID: 0}
-    - target: {fileID: 4711059470900925283, guid: eaad5418eab5a45469bac625c147f46a, type: 3}
-      propertyPath: cursorTexture2
-      value: 
-      objectReference: {fileID: 2800000, guid: 2e2a281fd7d5cbd47836afd62906fe0f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

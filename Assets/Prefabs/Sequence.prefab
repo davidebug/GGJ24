@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117, y: -84}
-  m_SizeDelta: {x: 107.4307, y: 85.3937}
+  m_AnchoredPosition: {x: 572.5, y: -115}
+  m_SizeDelta: {x: 435.7674, y: 160.3162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2983741184092844409
 CanvasRenderer:
@@ -76,6 +76,6 @@ MonoBehaviour:
   SequenceGameObject: {fileID: 0}
   CorrectTryAsset: {fileID: 0}
   EmptyTryAsset: {fileID: 0}
-  SequenceLength: 0
-  CurrentCorrectNumber: 0
-  TrySpacing: 20
+  currentTries: []
+  TrySpacing: 100
+  enabled: 0
