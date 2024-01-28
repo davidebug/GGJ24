@@ -26,6 +26,7 @@ public class AudioManager : Manager<AudioManager>
         Assert.IsNotNull(AudioAssetSO);
         //GameManager.Get().OnGameStateChanged += SwitchSongBasedOnGameState;
         audioSource.PlayOneShot(AudioAssetSO.gamePlayMusic_2);
+        audioSource.loop = true;
     }
 
     //private void SwitchSongBasedOnGameState(GameState state)
