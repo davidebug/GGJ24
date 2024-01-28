@@ -148,8 +148,9 @@ MonoBehaviour:
   - {fileID: 5078864977789899084}
   - {fileID: 4025885970144088644}
   - {fileID: 7899287347536327714}
-  sequenceOrder: 01000000020000000300000004000000
+  sequenceOrder: 00000000010000000200000003000000
   MaxTime: 15
+  fadeDuration: 1
 --- !u!1 &8034485047205013981
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,7 +48,8 @@ MonoBehaviour:
   levelDatasSO: {fileID: 11400000, guid: e227ecf73d37a0446ace6b22c80ef892, type: 2}
   levelIndex: 0
   CurrentCorrectNumber: 0
-  CorrectSequenceOrder: 030000000200000001000000
+  CorrectSequenceOrder: 
   CurrentTime: 0
-  MaxTime: 100
+  MaxTime: 15
   currentCharacter: {fileID: 0}
+  SkipMainMenu: 0

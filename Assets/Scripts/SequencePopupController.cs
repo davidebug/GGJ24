@@ -15,6 +15,7 @@ public class SequencePopupController : MonoBehaviour
     public int maxPieces = 10;
 
     private Character currentCharacter;
+    private List<GameObject> istantiatedObjs = new List<GameObject>();
 
     private bool Subscribed = false;
     void OnEnable()
@@ -62,8 +63,23 @@ public class SequencePopupController : MonoBehaviour
         yield return FadeOut();
 
         this.gameObject.SetActive(false);
+
         // Start game
-        GameManager.Get().StartTimer();
+        GameManager.Get().StartGame();
+
+        Reset();
+    }
+
+    private void Reset()
+    {
+        currentCharacter = null;
+        foreach (GameObject obj in istantiatedObjs)
+        {
+            if (obj != null)
+            {
+                Destroy(obj);
+            }
+        }
     }
 
     private IEnumerator FadeIn()
@@ -116,12 +132,13 @@ public class SequencePopupController : MonoBehaviour
 
             // Instantiate the sequence piece
             GameObject piece = Instantiate(arrow ? arrowPrefab : sequencePiecePrefab, transform);
+            istantiatedObjs.Add(piece);
 
             // Set its texture to currentTexture if it's not an arrow piece
             if (!arrow)
             {
                 int correctSequenceIndex = currentCharacter.sequenceOrder[pieceIndex];
-                Debug.Log($"piece index {pieceIndex} taking {correctSequenceIndex} from sequence in image {currentCharacter.bodyParts[correctSequenceIndex].bodyNumberIndex}");
+                //Debug.Log($"piece index {pieceIndex} taking {correctSequenceIndex} from sequence in image {currentCharacter.bodyParts[correctSequenceIndex].bodyNumberIndex}");
                 Image currentImage = currentCharacter.bodyParts[correctSequenceIndex].bodyImage;
                 // Access the Image component of the piece
                 piece.GetComponent<Image>().sprite = currentImage.sprite;

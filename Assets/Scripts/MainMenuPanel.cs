@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuPanel : MonoBehaviour
 {
@@ -12,8 +13,17 @@ public class MainMenuPanel : MonoBehaviour
   
     void Start()
     {
-        StartButton.onClick.AddListener(GameManager.Get().StartNewGame);
-        QuitGame.onClick.AddListener(GameManager.Get().QuitGame);   
+        StartButton.onClick.AddListener(LoadGame);
+        QuitGame.onClick.AddListener(QuitApplication);   
     }
     
+    void LoadGame()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    void QuitApplication()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
 }

@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
+
 
 public enum GameState
 {
-    START_MENU,
     SOLUTION,
     PLAYING,
     GAME_OVER,
@@ -28,6 +29,7 @@ public class GameManager : Manager<GameManager>
 
     public Action OnStageBegin;
 
+    public RectTransform bodyRectTransformPlaceHolder;
     public int CurrentCorrectNumber;
     public int TotalSequenceLength
     {
@@ -44,40 +46,24 @@ public class GameManager : Manager<GameManager>
     [SerializeField]
     private bool SkipMainMenu;
     void Start()
-    {
-        uiManagerInstance = UIManager.Get();
-        Assert.IsNotNull(uiManagerInstance);
+    {  
         Assert.IsNotNull(levelDatasSO);
-        if(SkipMainMenu)
-        {
-            StartNewGame();
-
-        }
-        else
-        {
-            gameState = GameState.START_MENU;   
-            OnGameStateChanged?.Invoke(gameState);
-        }
-        
+        StartNewGame();
     }
 
-    public void initGameValues()
+    public void StartNewGame()
     {
-        CurrentTime = 0;
-        LoadCurrentCharacter(levelIndex);
-        gameState = GameState.SOLUTION;
-        OnGameStateChanged?.Invoke(gameState);
-        //UIManager.Instance.ClearCardsUI();
-        //UIManager.Instance.disableGameEndedScreen();
 
-        
+        levelIndex = 0;
+        LoadStage(levelIndex);
+
     }
 
     public void ResetGame()
     {
-        CurrentTime = 0;
+        
         levelIndex = 0;
-        LoadCurrentCharacter(levelIndex);
+        LoadStage(levelIndex);
         gameState = GameState.SOLUTION;
         OnGameStateChanged?.Invoke(gameState);
         //UIManager.Instance.ClearCardsUI();
@@ -87,18 +73,38 @@ public class GameManager : Manager<GameManager>
     }
 
 
-    public void LoadCurrentCharacter(int levelIndex)
+    public void LoadStage(int levelIndex)
     {
-        int currentCharacterIndex = Math.Min(levelIndex, levelDatasSO.characters.Length);
-        currentCharacter = Instantiate(levelDatasSO.GetCharacter(currentCharacterIndex));
 
-        currentCharacter.gameObject.transform.SetParent(uiManagerInstance.bodyRectTransformPlaceHolder, true);
+        if(currentCharacter != null)
+        {
+            Destroy(currentCharacter);
+        }
+        currentCharacter = Instantiate(levelDatasSO.GetCharacter(levelIndex));
+
+        currentCharacter.gameObject.transform.SetParent(bodyRectTransformPlaceHolder, true);
+        
         currentCharacter.gameObject.SetActive(false);
+
+        CurrentTime = 0;
         MaxTime = currentCharacter.MaxTime;
         CorrectSequenceOrder = currentCharacter.sequenceOrder;
         currentSequenceLength = CorrectSequenceOrder.Length;
+        CurrentCorrectNumber = 0;
+
+        // Show Solution through popup
+        gameState = GameState.SOLUTION;
+        OnGameStateChanged?.Invoke(gameState);
+    }
+
+    public void StartGame()
+    {
+        gameState = GameState.PLAYING;
+        OnGameStateChanged?.Invoke(gameState);
+
         ShowCurrentCharacter();
     }
+
 
     public void ShowCurrentCharacter()
     {
@@ -123,6 +129,7 @@ public class GameManager : Manager<GameManager>
         if(bodyPartIndex == correctImageIndex)
         {
             CurrentCorrectNumber++;
+            OnCorrectSequence?.Invoke();
             if(CurrentCorrectNumber >= currentSequenceLength)
             {
                 EndGame(true);
@@ -132,6 +139,7 @@ public class GameManager : Manager<GameManager>
 
         CurrentCorrectNumber = 0;
         OnWrongSequence?.Invoke();
+
         return false;
     }
 
@@ -172,34 +180,15 @@ public class GameManager : Manager<GameManager>
             OnGameStateChanged?.Invoke(gameState);
         }
 
-        ResetGameState();
+        CurrentTime = 0f;
     }
-    public void ResetGameState()
-    {
-        MaxTime = CurrentTime = 0f;
-    }
-    public void StartNewGame()
-    {
-        levelIndex = 0;
-        initGameValues();
 
-    }
 
     public void NextStage()
     {
-        gameState = GameState.SOLUTION;
-        OnGameStateChanged?.Invoke(gameState);
-        LoadCurrentCharacter(levelIndex);
-        ShowCurrentCharacter();
-
+        LoadStage(levelIndex);
     }
 
-    public void StartTimer()
-    {
-        gameState = GameState.PLAYING;
-        OnGameStateChanged?.Invoke(gameState);
-
-    }
 
 
 

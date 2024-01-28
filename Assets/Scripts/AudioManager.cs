@@ -27,17 +27,17 @@ public class AudioManager : Manager<AudioManager>
 
     private void SwitchSongBasedOnGameState(GameState state)
     {
-        switch(state)
-        {
-            case GameState.START_MENU:
-                if (AudioAssetSO.mainMenuSongTheme)
-                {
-                    audioSource.PlayOneShot(AudioAssetSO.mainMenuSongTheme);
-                }
-                break;
-            default: break; 
+        //switch(state)
+        //{
+        //    case GameState.START_MENU:
+        //        if (AudioAssetSO.mainMenuSongTheme)
+        //        {
+        //            audioSource.PlayOneShot(AudioAssetSO.mainMenuSongTheme);
+        //        }
+        //        break;
+        //    default: break; 
 
-        }
+        //}
     }
 
     // Update is called once per frame

@@ -25,16 +25,17 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     private void Start()
     {
-        gameManager = GameManager.Get();
-    }
-    private void OnEnable()
-    {
-        if(gameManager == null)
+        
+        if (gameManager == null)
         {
             gameManager = GameManager.Get();
         }
 
         gameManager.OnWrongSequence += Unselect;
+    }
+    private void OnEnable()
+    {
+        gameManager = GameManager.Get();
 
     }
 
