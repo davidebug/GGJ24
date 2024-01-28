@@ -43,3 +43,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9afa41fe3a9d9e9418a8df212881072d, type: 3}
   - {fileID: 8300000, guid: 4b3c682d0490a6041b92b2a319cd428c, type: 3}
   - {fileID: 8300000, guid: d6110646bab129340b3dca035e0c977e, type: 3}
+  SFX_TimeRunning: {fileID: 8300000, guid: 9096ec25a8261d24cae2b7d639a222db, type: 3}
+  SFX_Whoosh:
+  - {fileID: 8300000, guid: 5205e5346abc79247af7a8ea54dad4c3, type: 3}
+  - {fileID: 8300000, guid: fa42ed5ecc291fe4aad6c90e64391f4d, type: 3}
+  - {fileID: 8300000, guid: f22bd128070f6a54ca8c57d5c969b970, type: 3}
