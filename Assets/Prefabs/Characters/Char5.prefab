@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 16.77, y: 7.8, z: 6.39, w: 20.36}
+  m_RaycastPadding: {x: 31.2, y: 7.8, z: 29.7, w: 58.19}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -342,8 +342,8 @@ MonoBehaviour:
   - {fileID: 5709129547641463260}
   - {fileID: 6403768321327749674}
   - {fileID: 3109949723311153217}
-  sequenceOrder: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
-  MaxTime: 80
+  sequenceOrder: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
+  MaxTime: 250
   smiles:
   - {fileID: 8092819949612988056}
   - {fileID: 5704439899426531797}

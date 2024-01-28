@@ -151,7 +151,7 @@ MonoBehaviour:
   - {fileID: 4025885970144088644}
   - {fileID: 7047532855201194594}
   sequenceOrder: 0000000001000000020000000300000004000000
-  MaxTime: 15
+  MaxTime: 30
   smiles:
   - {fileID: 8092819949612988056}
   fadeDuration: 1
