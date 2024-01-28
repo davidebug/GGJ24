@@ -16,3 +16,6 @@ MonoBehaviour:
   gamePlayMusic_2: {fileID: 8300000, guid: 7305486b8c4a05a47b3635d3750642e6, type: 3}
   mainMenuSongTheme: {fileID: 8300000, guid: 6c740ef29e8290a4b99a9c1327ab9d53, type: 3}
   gameOverSong: {fileID: 8300000, guid: 1d28b33bb80b2c242a852b4c0c6939c2, type: 3}
+  SFX_partCorrect: {fileID: 8300000, guid: 99d49cdddbdb5b846857725de62a1e8f, type: 3}
+  SFX_partIncorrect: {fileID: 8300000, guid: b88c2aff7947fe84484ae988add8db69, type: 3}
+  SFX_feather: {fileID: 8300000, guid: 1546b0542ec9d2a448267862c356af4e, type: 3}
