@@ -116,7 +116,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 306090c7ce5476341a388cdc508314c8, type: 3}
   - {fileID: 21300000, guid: 51f1a0013d398f746b19ac6345a5f822, type: 3}
   - {fileID: 21300000, guid: 49ddaf09f8301a748895aa0b43f3a641, type: 3}
-  - {fileID: 21300000, guid: a35cc46cc7a241c428f04260f1f19b35, type: 3}
+  - {fileID: 21300000, guid: 51a637ab06cd98344b2e78134b438db1, type: 3}
   winImage: {fileID: 7730325419496235104}
   animationDuration: 0.5
   victoryPopupDuration: 10
