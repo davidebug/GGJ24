@@ -158,7 +158,7 @@ public class GameManager : Manager<GameManager>
         {
 
             currentCharacter.MakeSmile();
-
+            AudioManager.Get().PlayLaugh(levelIndex);
             StartCoroutine(WaitForVictory());
 
         }
