@@ -24,27 +24,28 @@ public class AudioManager : Manager<AudioManager>
     void Start()
     {
         Assert.IsNotNull(AudioAssetSO);
-        GameManager.Get().OnGameStateChanged += SwitchSongBasedOnGameState;
+        //GameManager.Get().OnGameStateChanged += SwitchSongBasedOnGameState;
+        audioSource.PlayOneShot(AudioAssetSO.gamePlayMusic_2);
     }
 
-    private void SwitchSongBasedOnGameState(GameState state)
-    {
-        switch (state)
-        {
-            case GameState.SOLUTION:
-                if (AudioAssetSO.mainMenuSongTheme)
-                {
-                    //int nAudioClip = nChanges % 2;
-                    // original idea was to fade from one song to another
-                    audioSource.Stop();
-                    audioSource.PlayOneShot(AudioAssetSO.gamePlayMusic_2);
-                    //nChanges++;
-                }
-                break;
-            default: break;
+    //private void SwitchSongBasedOnGameState(GameState state)
+    //{
+    //    switch (state)
+    //    {
+    //        case GameState.SOLUTION:
+    //            if (AudioAssetSO.mainMenuSongTheme)
+    //            {
+    //                //int nAudioClip = nChanges % 2;
+    //                // original idea was to fade from one song to another
+    //                audioSource.Stop();
+                   
+    //                //nChanges++;
+    //            }
+    //            break;
+    //        default: break;
 
-        }
-    }
+    //    }
+    //}
 
     //IEnumerator  PlayGameplayAudioSwitchCoroutine()
     //{
