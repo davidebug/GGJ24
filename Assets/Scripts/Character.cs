@@ -31,18 +31,19 @@ public class Character : MonoBehaviour
         GameManager.Get().OnGameStateChanged += FadeAndDisable;
     }
 
-    void Update()
-    {
+    //void Update()
+    //{
 
-    }
+    //}
 
     public void FadeAndDisable(GameState gameState)
     {
-        if(gameState != GameState.PLAYING)
+        GameManager.Get().OnGameStateChanged -= FadeAndDisable;
+        if (gameState == GameState.VICTORY)
         {
             StartCoroutine(FadeAndDisableCoroutine());
         }
-        
+
     }
 
     IEnumerator FadeAndDisableCoroutine()
@@ -83,6 +84,9 @@ public class Character : MonoBehaviour
         }
 
         // Disable the character
-        gameObject.SetActive(false);
+        GameManager.Get().NextStage();
+        
+        Destroy(gameObject);
+
     }
 }

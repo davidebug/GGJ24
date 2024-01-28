@@ -68,7 +68,7 @@ public class EndingPopup : MonoBehaviour
         else
         {
             // Hide the popup immediately if it's not victory or game over
-            StartCoroutine(AnimatePopup(false));
+            gameObject.SetActive(false);
         }
     }
 
@@ -78,7 +78,7 @@ public class EndingPopup : MonoBehaviour
         // Hide the popup with animation after the delay
         StartCoroutine(AnimatePopup(false));
 
-        GameManager.Get().NextStage();
+       
         
     }
 
