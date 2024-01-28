@@ -6,7 +6,7 @@ public class Character : MonoBehaviour
     public BodyPart[] bodyParts;
     public int[] sequenceOrder;
     public int MaxTime;
-    public GameObject smile;
+    public GameObject[] smiles;
     public float fadeDuration = 1f; // Duration of the fade effect
 
     private Renderer[] renderers;
@@ -29,7 +29,8 @@ public class Character : MonoBehaviour
     void Start()
     {
         GameManager.Get().OnGameStateChanged += FadeAndDisable;
-        smile.SetActive(false);
+        foreach (GameObject smile in smiles)
+            smile.SetActive(false);
     }
 
     //void Update()
@@ -48,7 +49,10 @@ public class Character : MonoBehaviour
     }
 
     public void MakeSmile()
-    { smile.SetActive(true); }
+    { 
+        foreach(GameObject smile in smiles)
+            smile.SetActive(true); 
+    }
 
     IEnumerator FadeAndDisableCoroutine()
     {

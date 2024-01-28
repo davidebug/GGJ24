@@ -152,7 +152,8 @@ MonoBehaviour:
   - {fileID: 7047532855201194594}
   sequenceOrder: 0000000001000000020000000300000004000000
   MaxTime: 15
-  smile: {fileID: 8092819949612988056}
+  smiles:
+  - {fileID: 8092819949612988056}
   fadeDuration: 1
 --- !u!1 &7885122578307947987
 GameObject:

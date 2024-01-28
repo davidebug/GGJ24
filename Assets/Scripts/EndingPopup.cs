@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndingPopup : MonoBehaviour
 {
@@ -82,6 +83,15 @@ public class EndingPopup : MonoBehaviour
         
     }
 
+    public void RestartGame()
+    {
+        GameManager.Get().StartNewGame();
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     // Start is called before the first frame update
     void Start()
     {
