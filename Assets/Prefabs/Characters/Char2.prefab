@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24, y: -62}
+  m_AnchoredPosition: {x: -21, y: -70}
   m_SizeDelta: {x: 145.9802, y: 150.7829}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2104188977618160527
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 10, y: 10, z: 39.69, w: 23.64}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -130,7 +130,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -668, y: -332}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1626575044860138752
 MonoBehaviour:
@@ -190,7 +190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 82.62511, y: -61.999954}
+  m_AnchoredPosition: {x: 85.62511, y: -69.999954}
   m_SizeDelta: {x: 126.3032, y: 126.3037}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1920225024877731710
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 5.52, y: 9.3, z: 31.62, w: 11.17}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -280,7 +280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -111.10892, y: -20.587563}
+  m_AnchoredPosition: {x: -108.10892, y: -28.587563}
   m_SizeDelta: {x: 172.8327, y: 172.8327}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8698128332315042344
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 32.84, y: 20.15, z: 13.08, w: 15.57}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -370,7 +370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.0843086, y: 40.817142}
+  m_AnchoredPosition: {x: 7.084305, y: 32.81714}
   m_SizeDelta: {x: 71.7302, y: 71.7302}
   m_Pivot: {x: 0.5, y: 0.50000024}
 --- !u!222 &3864224413333360443
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 80b165051bfa44a408880cc0c2cc4b88, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 016647db958aa20479d202de1f1dcf2c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -460,7 +460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.011692047, y: 53.338844}
+  m_AnchoredPosition: {x: 2.9883118, y: 45.338844}
   m_SizeDelta: {x: 173.0083, y: 173.0083}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4319153356173645764
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 32.24, y: 21.97, z: 30.82, w: 4.94}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -550,7 +550,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 37.235}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 121.65756, y: 26.53695}
+  m_AnchoredPosition: {x: 124.65756, y: 18.53695}
   m_SizeDelta: {x: 130.9391, y: 130.9391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6448297860978906471
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 30.47, y: 5.35, z: 3.1, w: 9.31}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
