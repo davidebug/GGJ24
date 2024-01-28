@@ -106,7 +106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4775387558757983886
 RectTransform:
   m_ObjectHideFlags: 0
@@ -146,8 +146,7 @@ MonoBehaviour:
   - {fileID: 5071626906031825523}
   - {fileID: 5078864977789899084}
   - {fileID: 4025885970144088644}
-  - {fileID: 0}
-  sequenceOrder: 01000000020000000300000000000000
+  sequenceOrder: 000000000100000002000000
   MaxTime: 15
   smile: {fileID: 1598276360741258786}
   fadeDuration: 1
