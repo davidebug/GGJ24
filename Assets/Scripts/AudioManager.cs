@@ -35,7 +35,7 @@ public class AudioManager : Manager<AudioManager>
                 if (AudioAssetSO.mainMenuSongTheme)
                 {
                     int nAudioClip = nChanges % 2;
-
+                    audioSource.Stop();
                     audioSource.PlayOneShot(AudioAssetSO.GetGameplayAudioClip(nAudioClip));
                     nChanges++;
                 }
