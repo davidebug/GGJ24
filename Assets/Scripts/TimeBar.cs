@@ -11,10 +11,12 @@ public class GameBarDecrease : MonoBehaviour
 
     private float startTime;
     private GameState currentState;
+    private AudioSource audioSource;
 
     void Start()
     {
         GameManager.Get().OnGameStateChanged += InitTime;
+        audioSource = gameObject.AddComponent<AudioSource>();   
     }
 
     void InitTime(GameState currentState)
@@ -47,10 +49,17 @@ public class GameBarDecrease : MonoBehaviour
             // Apply the scale to the green bar only
             greenBar.localScale = new Vector3(scaleFactor, 1f, 1f);
 
+            if(scaleFactor < 0.3f && !audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(AudioManager.Get().AudioAssetSO.SFX_TimeRunning);
+                audioSource.volume = 0.6f;
+            }
+
             // If the time has exceeded the maximum time, you can perform some action here
             if (elapsedTime >= maxTime)
             {
                 // Do something when time is up
+                audioSource.Stop();
             }
         }
         

@@ -20,6 +20,10 @@ public class AudioAssetScriptableObject : ScriptableObject
     public AudioClip[] SFX_Laughes;
 
     public AudioClip[] SFX_Woorps;
+
+    public AudioClip SFX_TimeRunning;
+
+    public AudioClip[] SFX_Whoosh;
     public AudioClip GetGameplayAudioClip(int i)
     {
         if(i == 0)
@@ -41,5 +45,12 @@ public class AudioAssetScriptableObject : ScriptableObject
         int i = Random.Range(0,SFX_Woorps.Length);
 
         return SFX_Woorps[i];
+    }
+
+    public AudioClip GetRandomWhoosh()
+    {
+        int i = Random.Range(0, SFX_Whoosh.Length);
+
+        return SFX_Whoosh[i];
     }
 }

@@ -72,4 +72,9 @@ public class AudioManager : Manager<AudioManager>
     {
         PlayingWithSecondAudioSource(AudioAssetSO.GetRandomWoorp());    
     }
+
+    public void PlayWhoosh()
+    {
+        PlayingWithSecondAudioSource(AudioAssetSO.GetRandomWhoosh());   
+    }
 }

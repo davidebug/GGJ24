@@ -166,6 +166,7 @@ public class GameManager : Manager<GameManager>
         {
             levelIndex = 0;
             gameState = GameState.GAME_OVER;
+            AudioManager.Get().PlayWhoosh();
             OnGameStateChanged?.Invoke(gameState);
         }
 
