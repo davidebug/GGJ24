@@ -85,7 +85,7 @@ public class GameManager : Manager<GameManager>
         }
         currentCharacter = Instantiate(levelDatasSO.GetCharacter(levelIndex));
 
-        currentCharacter.gameObject.transform.SetParent(bodyRectTransformPlaceHolder, true);
+        currentCharacter.gameObject.transform.SetParent(bodyRectTransformPlaceHolder, false);
         
         currentCharacter.gameObject.SetActive(false);
 
@@ -113,7 +113,7 @@ public class GameManager : Manager<GameManager>
     {
         currentCharacter.gameObject.SetActive(true);
         RectTransform rectTransform = currentCharacter.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = Vector3.zero;  
+        rectTransform.anchoredPosition = Vector3.zero;
     }
 
     //Return true if its the correct body part, false otherwise
