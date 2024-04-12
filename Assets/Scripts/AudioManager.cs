@@ -12,7 +12,7 @@ public class AudioManager : Manager<AudioManager>
 
     // Start is called before the first frame update
     int nChanges = 0;
-    public void Awake()
+    protected override void Awake() 
     {
         base.Awake();
         audioSource = GetComponent<AudioSource>();
