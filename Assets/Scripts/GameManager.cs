@@ -50,21 +50,21 @@ public class GameManager : Manager<GameManager>
     void Start()
     {  
         Assert.IsNotNull(levelDatasSO);
-        Assert.IsNotNull(gameStateMachine); 
+        Assert.IsNotNull(gameStateMachine);
 
-        gameStateMachine.StartNewGame();    
+        gameStateMachine.StartNewGame(this); 
     }
 
     public void StartNewGame()
     {
-        gameStateMachine.StartNewGame();
+        gameStateMachine.StartNewGame(this);
 
     }
 
     public void ResetGame()
     {
 
-        gameStateMachine.StartNewGame();
+        gameStateMachine.StartNewGame(this);
         gameState = GameState.SOLUTION;
         OnGameStateChanged?.Invoke(gameState);
         //UIManager.Instance.ClearCardsUI();

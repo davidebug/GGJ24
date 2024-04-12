@@ -7,6 +7,7 @@ public class NewGameState: IState
 {
     private GameManager gameManager;    
     private GameStateMachine gameStateMachine;
+   
     public NewGameState(GameManager inGameManager, GameStateMachine inGameStateMachine)
     {
         gameManager = inGameManager;

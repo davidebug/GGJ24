@@ -29,12 +29,12 @@ public class GameStateMachine : StateMachine
     private PlayingGameState playingGameState;
 
     #endregion
-    public void StartNewGame()
+    public void StartNewGame(GameManager inGameManager)
     {
 
        if (newGameState == null)
        {
-            newGameState = new NewGameState(GameManager.Get(), this);
+            newGameState = new NewGameState(inGameManager, this);
        }
 
         StartState(newGameState);
