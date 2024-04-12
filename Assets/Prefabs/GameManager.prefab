@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7281050421789086814}
   - component: {fileID: 7852697382104027354}
+  - component: {fileID: 3456804760548052134}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,11 +46,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 1
+  gameStateMachine: {fileID: 3456804760548052134}
   levelDatasSO: {fileID: 11400000, guid: e227ecf73d37a0446ace6b22c80ef892, type: 2}
   levelIndex: 0
+  bodyRectTransformPlaceHolder: {fileID: 0}
   CurrentCorrectNumber: 0
   CorrectSequenceOrder: 
   CurrentTime: 0
   MaxTime: 15
   currentCharacter: {fileID: 0}
   SkipMainMenu: 0
+--- !u!114 &3456804760548052134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7279217501067750994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2422f4297dcd345448bedb18d7c9dd89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  LoseText: {fileID: 0}
+  Buttons: {fileID: 0}
+  NextChar: {fileID: 0}
+  MainMenu2: {fileID: 0}
+  endingPopUp: {fileID: 0}
+  levelProgressSprites: []
+  winImage: {fileID: 0}
+  animationDuration: 0.5
+  victoryPopupDuration: 4

@@ -18,8 +18,10 @@ public enum GameState
 public class GameManager : Manager<GameManager> 
 {
     //public LevelDataAsset dataAsset;
-
+    
     public GameState gameState;
+    public GameStateMachine gameStateMachine;
+
     public LevelDataAssetScriptableObject levelDatasSO;
 
     public int levelIndex = 1;
@@ -41,7 +43,6 @@ public class GameManager : Manager<GameManager>
     public float CurrentTime;
     public float MaxTime;
 
-    private UIManager uiManagerInstance;
     public Character currentCharacter;
     private int currentSequenceLength;
     [SerializeField]
@@ -49,22 +50,21 @@ public class GameManager : Manager<GameManager>
     void Start()
     {  
         Assert.IsNotNull(levelDatasSO);
-        StartNewGame();
+        Assert.IsNotNull(gameStateMachine); 
+
+        gameStateMachine.StartNewGame();    
     }
 
     public void StartNewGame()
     {
-
-        levelIndex = 0;
-        LoadStage(levelIndex);
+        gameStateMachine.StartNewGame();
 
     }
 
     public void ResetGame()
     {
-        
-        levelIndex = 0;
-        LoadStage(levelIndex);
+
+        gameStateMachine.StartNewGame();
         gameState = GameState.SOLUTION;
         OnGameStateChanged?.Invoke(gameState);
         //UIManager.Instance.ClearCardsUI();
@@ -83,10 +83,9 @@ public class GameManager : Manager<GameManager>
         {
             Destroy(currentCharacter);
         }
-        currentCharacter = Instantiate(levelDatasSO.GetCharacter(levelIndex));
 
+        currentCharacter = Instantiate(levelDatasSO.GetCharacter(levelIndex));
         currentCharacter.gameObject.transform.SetParent(bodyRectTransformPlaceHolder, false);
-        
         currentCharacter.gameObject.SetActive(false);
 
         CurrentTime = 0;
