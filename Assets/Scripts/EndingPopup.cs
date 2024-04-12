@@ -115,9 +115,4 @@ public class EndingPopup : MonoBehaviour
         GameManager.Get().OnGameStateChanged += ShowPopup;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
