@@ -4,28 +4,26 @@ using UnityEditor;
 using UnityEngine;
 
 public class NewGameState: IState
-{
-    private GameManager gameManager;    
-    private GameStateMachine gameStateMachine;
+{  
+    private GameStateMachine context;
    
-    public NewGameState(GameManager inGameManager, GameStateMachine inGameStateMachine)
+    public NewGameState(GameStateMachine inGameStateMachine)
     {
-        gameManager = inGameManager;
-        gameStateMachine = inGameStateMachine; 
+        context = inGameStateMachine; 
     }
 
     public void Enter()
     {
-        gameManager.levelIndex = 0;
-        gameManager.LoadStage(gameManager.levelIndex);
+        context.LevelIndex = 0;
+        context.LoadStage(context.LevelIndex);
     }
 
     public void Update()
     {
-        if (gameManager.currentCharacter)
+        if (context.currentCharacter)
         {
             Exit();
-            gameStateMachine.StartState(new PlayingGameState(gameManager, gameStateMachine));
+            context.StartState(new PlayingGameState(context));
         }
     }
 

@@ -16,42 +16,15 @@ public enum GameState
     WON_GAME
 }
 public class GameManager : Manager<GameManager> 
-{
-    //public LevelDataAsset dataAsset;
-    
+{    
     public GameState gameState;
     public GameStateMachine gameStateMachine;
+   
 
-    public LevelDataAssetScriptableObject levelDatasSO;
-
-    public int levelIndex = 1;
-
-    public Action OnCorrectSequence;
-    public Action OnWrongSequence;
-    public Action<GameState> OnGameStateChanged;
-
-    public Action OnStageBegin;
-
-    public RectTransform bodyRectTransformPlaceHolder;
-    public int CurrentCorrectNumber;
-    public int TotalSequenceLength
-    {
-        get { return CorrectSequenceOrder.Length; }
-    }
-    public int[] CorrectSequenceOrder;
-
-    public float CurrentTime;
-    public float MaxTime;
-
-    public Character currentCharacter;
-    private int currentSequenceLength;
-    [SerializeField]
-    private bool SkipMainMenu;
     void Start()
     {  
         Assert.IsNotNull(levelDatasSO);
         Assert.IsNotNull(gameStateMachine);
-
         gameStateMachine.StartNewGame(this); 
     }
 
@@ -67,37 +40,11 @@ public class GameManager : Manager<GameManager>
         gameStateMachine.StartNewGame(this);
         gameState = GameState.SOLUTION;
         OnGameStateChanged?.Invoke(gameState);
-        //UIManager.Instance.ClearCardsUI();
-        //UIManager.Instance.disableGameEndedScreen();
-
 
     }
 
 
-    public void LoadStage(int levelIndex)
-    {
-        if (levelIndex >= 5)
-            return;
-
-        if(currentCharacter != null)
-        {
-            Destroy(currentCharacter);
-        }
-
-        currentCharacter = Instantiate(levelDatasSO.GetCharacter(levelIndex));
-        currentCharacter.gameObject.transform.SetParent(bodyRectTransformPlaceHolder, false);
-        currentCharacter.gameObject.SetActive(false);
-
-        CurrentTime = 0;
-        MaxTime = currentCharacter.MaxTime;
-        CorrectSequenceOrder = currentCharacter.sequenceOrder;
-        currentSequenceLength = CorrectSequenceOrder.Length;
-        CurrentCorrectNumber = 0;
-
-        // Show Solution through popup
-        gameState = GameState.SOLUTION;
-        OnGameStateChanged?.Invoke(gameState);
-    }
+   
 
     public void StartGame()
     {
@@ -107,13 +54,7 @@ public class GameManager : Manager<GameManager>
         ShowCurrentCharacter();
     }
 
-
-    public void ShowCurrentCharacter()
-    {
-        currentCharacter.gameObject.SetActive(true);
-        RectTransform rectTransform = currentCharacter.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = Vector3.zero;
-    }
+   
 
     //Return true if its the correct body part, false otherwise
     public bool TryToSelectBodyPart(int bodyPartIndex)
@@ -125,7 +66,7 @@ public class GameManager : Manager<GameManager>
             Debug.LogError($"Sequence array dim is: {CurrentCorrectNumber} you are trying to read position {CurrentCorrectNumber}");
         }
 
-         CurrentCorrectNumber = Math.Min(CurrentCorrectNumber, CorrectSequenceOrder.Length);
+        CurrentCorrectNumber = Math.Min(CurrentCorrectNumber, CorrectSequenceOrder.Length);
         int correctImageIndex = CorrectSequenceOrder[CurrentCorrectNumber];
 
         if(bodyPartIndex == correctImageIndex)
@@ -145,49 +86,15 @@ public class GameManager : Manager<GameManager>
         return false;
     }
 
-   
-
     public void WinGame()
     {
         gameState = GameState.WON_GAME;
         SceneManager.LoadScene("WinScene");
     }
 
-    public void EndGame(bool victory)
-    {
-        if (victory)
-        {
+  
 
-            currentCharacter.MakeSmile();
-            AudioManager.Get().PlayLaugh(levelIndex);
-            StartCoroutine(WaitForVictory());
-
-        }
-        else
-        {
-            levelIndex = 0;
-            gameState = GameState.GAME_OVER;
-            AudioManager.Get().PlayWhoosh();
-            OnGameStateChanged?.Invoke(gameState);
-        }
-
-        if (levelIndex > levelDatasSO.characters.Length)
-        {
-            WinGame();
-        }
-
-        CurrentTime = 0f;
-    }
-
-    IEnumerator WaitForVictory()
-    {
-        // Wait for 3 seconds
-        yield return new WaitForSeconds(2);
-
-        gameState = GameState.VICTORY;
-        OnGameStateChanged?.Invoke(gameState);
-        levelIndex++;
-    }
+   
     public void NextStage()
     {
         LoadStage(levelIndex);
@@ -203,17 +110,7 @@ public class GameManager : Manager<GameManager>
     {
         if(gameState == GameState.PLAYING)
         {
-            CurrentTime += Time.deltaTime;
-            if (CurrentTime > MaxTime)
-            {
-                EndGame(false);
-            }
-
-            // Cheat modet, win the game
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.W))
-            {
-                WinGame();
-            }
+           
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,20 +7,44 @@ using UnityEngine.UI;
 [SerializeField]
 public class GameStateMachine : StateMachine
 {
+    #region context
 
+    public LevelDataAssetScriptableObject levelDatasSO;
+    private int levelIndex = 1;
+    public Action OnCorrectSequence;
+    public Action OnWrongSequence;
+    public Action<GameState> OnGameStateChanged;
+    public Action OnStageBegin;
+    public RectTransform bodyRectTransformPlaceHolder;
+    public int CurrentCorrectNumber;
+    public int[] CorrectSequenceOrder;
+    public float CurrentTime;
+    public float MaxTime;
+    public Character currentCharacter;
+    public int TotalSequenceLength
+    {
+        get { return CorrectSequenceOrder.Length; }
+    }
 
-#region EndingPopUp
+    public int LevelIndex { get => levelIndex; set => levelIndex = value; }
+    public int CurrentSequenceLength { get => currentSequenceLength; set => currentSequenceLength = value; }
 
-    public GameObject LoseText;
-    public GameObject Buttons;
-    public GameObject NextChar;
-    public GameObject MainMenu2;
-    public GameObject endingPopUp;
+    private int currentSequenceLength;
+    [SerializeField]
+    private bool SkipMainMenu;
 
-    public Sprite[] levelProgressSprites;
-    public Image winImage;
-    public float animationDuration = 0.5f;
-    public float victoryPopupDuration = 4f;
+    #region SequenceContext
+
+    public SequenceBar sequenceBar;
+    public SequencePopupController sequencePopupController;
+
+    #endregion
+
+    #endregion
+
+    #region EndingPopUp
+
+    public EndingPopup endingPopup;
     #endregion
 
 
@@ -56,5 +81,75 @@ public class GameStateMachine : StateMachine
             currentState.Update();
 
         }
+    }
+
+
+    public void LoadStage(int levelIndex)
+    {
+        if (levelIndex >= 5)
+            return;
+
+        if (currentCharacter != null)
+        {
+            Destroy(currentCharacter);
+        }
+
+        currentCharacter = Instantiate(levelDatasSO.GetCharacter(levelIndex));
+        currentCharacter.gameObject.transform.SetParent(bodyRectTransformPlaceHolder, false);
+        currentCharacter.gameObject.SetActive(false);
+
+        CurrentTime = 0;
+        MaxTime = currentCharacter.MaxTime;
+        CorrectSequenceOrder = currentCharacter.sequenceOrder;
+        currentSequenceLength = CorrectSequenceOrder.Length;
+        CurrentCorrectNumber = 0;
+
+        // Show Solution through popup
+
+        //gameState = GameState.SOLUTION;
+        //OnGameStateChanged?.Invoke(gameState);
+    }
+
+    public void ShowCurrentCharacter()
+    {
+        currentCharacter.gameObject.SetActive(true);
+        RectTransform rectTransform = currentCharacter.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = Vector3.zero;
+    }
+
+    public void EndGame(bool victory)
+    {
+        if (victory)
+        {
+
+            currentCharacter.MakeSmile();
+            AudioManager.Get().PlayLaugh(levelIndex);
+            StartCoroutine(WaitForVictory());
+
+        }
+        else
+        {
+            levelIndex = 0;
+            gameState = GameState.GAME_OVER;
+            AudioManager.Get().PlayWhoosh();
+            OnGameStateChanged?.Invoke(gameState);
+        }
+
+        if (levelIndex > levelDatasSO.characters.Length)
+        {
+            WinGame();
+        }
+
+        CurrentTime = 0f;
+    }
+
+    IEnumerator WaitForVictory()
+    {
+        // Wait for 3 seconds
+        yield return new WaitForSeconds(2);
+
+        gameState = GameState.VICTORY;
+        OnGameStateChanged?.Invoke(gameState);
+        levelIndex++;
     }
 }
