@@ -30,16 +30,13 @@ public class GameManager : Manager<GameManager>
 
     public void StartNewGame()
     {
-        gameStateMachine.StartNewGame(this);
+        gameStateMachine.StartNewGame();
 
     }
 
     public void ResetGame()
     {
-
-        gameStateMachine.StartNewGame(this);
-        gameState = GameState.SOLUTION;
-        OnGameStateChanged?.Invoke(gameState);
+        gameStateMachine.StartNewGame();
 
     }
 
@@ -86,33 +83,17 @@ public class GameManager : Manager<GameManager>
         return false;
     }
 
-    public void WinGame()
-    {
-        gameState = GameState.WON_GAME;
-        SceneManager.LoadScene("WinScene");
-    }
+    
 
   
 
    
-    public void NextStage()
-    {
-        LoadStage(levelIndex);
-    }
-
+   
     public void QuitGame()
     {
         Application.Quit();
     }
 
-
-    public void Update()
-    {
-        if(gameState == GameState.PLAYING)
-        {
-           
-        }
-    }
 
     internal void UnselectEverything()
     {

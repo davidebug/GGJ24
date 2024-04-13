@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [SerializeField]
@@ -54,12 +55,12 @@ public class GameStateMachine : StateMachine
     private PlayingGameState playingGameState;
 
     #endregion
-    public void StartNewGame(GameManager inGameManager)
+    public void StartNewGame()
     {
 
        if (newGameState == null)
        {
-            newGameState = new NewGameState(inGameManager, this);
+            newGameState = new NewGameState(this);
        }
 
         StartState(newGameState);
@@ -86,7 +87,7 @@ public class GameStateMachine : StateMachine
 
     public void LoadStage(int levelIndex)
     {
-        if (levelIndex >= 5)
+        if (levelIndex >= levelDatasSO.characters.Length)
             return;
 
         if (currentCharacter != null)
@@ -104,10 +105,6 @@ public class GameStateMachine : StateMachine
         currentSequenceLength = CorrectSequenceOrder.Length;
         CurrentCorrectNumber = 0;
 
-        // Show Solution through popup
-
-        //gameState = GameState.SOLUTION;
-        //OnGameStateChanged?.Invoke(gameState);
     }
 
     public void ShowCurrentCharacter()
@@ -117,39 +114,24 @@ public class GameStateMachine : StateMachine
         rectTransform.anchoredPosition = Vector3.zero;
     }
 
-    public void EndGame(bool victory)
-    {
-        if (victory)
-        {
+ 
 
-            currentCharacter.MakeSmile();
-            AudioManager.Get().PlayLaugh(levelIndex);
-            StartCoroutine(WaitForVictory());
-
-        }
-        else
-        {
-            levelIndex = 0;
-            gameState = GameState.GAME_OVER;
-            AudioManager.Get().PlayWhoosh();
-            OnGameStateChanged?.Invoke(gameState);
-        }
-
-        if (levelIndex > levelDatasSO.characters.Length)
-        {
-            WinGame();
-        }
-
-        CurrentTime = 0f;
-    }
-
-    IEnumerator WaitForVictory()
+    private IEnumerator WaitForVictory()
     {
         // Wait for 3 seconds
         yield return new WaitForSeconds(2);
-
-        gameState = GameState.VICTORY;
-        OnGameStateChanged?.Invoke(gameState);
         levelIndex++;
+        StartNewGame();
+    }
+
+    public void NextStage()
+    {
+        LoadStage(levelIndex);
+    }
+
+
+    public void WinGame()
+    {
+        SceneManager.LoadScene("WinScene");
     }
 }

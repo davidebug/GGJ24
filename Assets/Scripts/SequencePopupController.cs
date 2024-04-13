@@ -18,33 +18,21 @@ public class SequencePopupController : MonoBehaviour
     private Character currentCharacter;
     private List<GameObject> istantiatedObjs = new List<GameObject>();
 
-    private bool Subscribed = false;
-    void OnEnable()
+    private bool isShowingAnimation = false;
+    
+
+ 
+    public void ShowAnimateSequence(Character character)
     {
-        if (GameManager.Get())
-        {
-            GameManager.Get().OnGameStateChanged += ShowAnimateSequence;
-            Subscribed = true;  
-        }
+        this.gameObject.SetActive(true);
+        currentCharacter = character;
+        StartCoroutine(AnimateSequencePopup());
+        isShowingAnimation = true;
     }
 
-    private void Start()
+    public bool IsShowingAnimation()
     {
-        if (!Subscribed)
-        {
-            GameManager.Get().OnGameStateChanged += ShowAnimateSequence;
-        }
-    }
-
-    public void ShowAnimateSequence(GameState currentState)
-    {
-        if(currentState == GameState.SOLUTION)
-        {
-            this.gameObject.SetActive(true);
-            currentCharacter = GameManager.Get().currentCharacter;
-            StartCoroutine(AnimateSequencePopup());
-        }
-
+        return isShowingAnimation;
     }
 
     private IEnumerator AnimateSequencePopup()
@@ -66,7 +54,7 @@ public class SequencePopupController : MonoBehaviour
         this.gameObject.SetActive(false);
 
         // Start game
-        GameManager.Get().StartGame();
+        isShowingAnimation = false;
 
         Reset();
     }
