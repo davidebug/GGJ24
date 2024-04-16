@@ -52,15 +52,16 @@ public class EndingPopup : MonoBehaviour
         }
     }
 
-    void ShowPopup(GameState currentState)
+    public void ShowPopup(bool isVictory)
     {
-        if (currentState == GameState.VICTORY)
+
+        if (isVictory)
         {
-            
+
             this.gameObject.SetActive(true);
             // Hide the popup after victoryPopupDuration seconds
-            winImage.sprite = levelProgressSprites[GameManager.Get().levelIndex];
-            if (!(GameManager.Get().levelIndex == 4))
+            winImage.sprite = levelProgressSprites[GameManager.Get().gameStateMachine.LevelIndex];
+            if (!(GameManager.Get().gameStateMachine.LevelIndex == 4))
             {
                 StartCoroutine(HideAfterDelay(victoryPopupDuration));
                 MainMenu2.SetActive(false);
@@ -74,7 +75,7 @@ public class EndingPopup : MonoBehaviour
             }
 
         }
-        else if (currentState == GameState.GAME_OVER)
+        else
         {
             MainMenu2.SetActive(false);
             this.gameObject.SetActive(true);
@@ -82,12 +83,14 @@ public class EndingPopup : MonoBehaviour
             Buttons.SetActive(true);
             NextChar.SetActive(false);
         }
-        else
-        {
-            MainMenu2.SetActive(false);
-            // Hide the popup immediately if it's not victory or game over
-            gameObject.SetActive(false);
-        }
+      
+    }
+
+    public void HidePopup()
+    {
+        MainMenu2.SetActive(false);
+        // Hide the popup immediately if it's not victory or game over
+        gameObject.SetActive(false);
     }
 
     IEnumerator HideAfterDelay(float delay)
@@ -96,8 +99,8 @@ public class EndingPopup : MonoBehaviour
         // Hide the popup with animation after the delay
         StartCoroutine(AnimatePopup(false));
 
-       
-        
+
+
     }
 
     public void RestartGame()

@@ -1,7 +1,9 @@
 ﻿
+using System;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 
 public class PlayingGameState
     : IState
@@ -22,7 +24,7 @@ public class PlayingGameState
         Assert.IsNotNull(gameStateMachine.sequenceBar);
         Assert.IsNotNull(gameStateMachine.sequencePopupController);
         // PHASE SOLUTION 
-        gameStateMachine.sequenceBar.UpdateSequence(gameStateMachine.CurrentSequenceLength, gameStateMachine.CurrentCorrectNumber);
+        gameStateMachine.OnStageBegin?.Invoke();
         gameStateMachine.sequencePopupController.ShowAnimateSequence(gameStateMachine.currentCharacter);
 
     }
@@ -35,7 +37,7 @@ public class PlayingGameState
         if (!hasSolutionBeenShown)
         {
             hasSolutionBeenShown = !gameStateMachine.sequencePopupController.IsShowingAnimation();
-            gameStateMachine.ShowCurrentCharacter();
+            ShowCurrentCharacter();
         }
         else
         {
@@ -63,13 +65,14 @@ public class PlayingGameState
     {
         gameStateMachine.CurrentTime = 0;
         
+        
         if (victory)
         {
 
             gameStateMachine.currentCharacter.MakeSmile();
             AudioManager.Get().PlayLaugh(gameStateMachine.LevelIndex);
-            gameStateMachine.StartState(new IdleState(gameStateMachine, 2, new NewGameState(gameStateMachine)));
             gameStateMachine.LevelIndex ++;
+            gameStateMachine.StartState(new IdleState(gameStateMachine, 2, new NewGameState(gameStateMachine)));
 
         }
         else
@@ -81,14 +84,59 @@ public class PlayingGameState
 
         if (gameStateMachine.LevelIndex > gameStateMachine.levelDatasSO.characters.Length)
         {
-            gameStateMachine.WinGame();
+            WinGame();
         }
 
+        //TODO: this pop up won't be called in case of winning
+        gameStateMachine.endingPopup.ShowPopup(victory);
         Exit();
     }
 
     public void Exit()
     {
         
+    }
+
+
+    public void ShowCurrentCharacter()
+    {
+        gameStateMachine.currentCharacter.gameObject.SetActive(true);
+        RectTransform rectTransform = gameStateMachine.currentCharacter.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = Vector3.zero;
+    }
+
+    public void WinGame()
+    {
+        SceneManager.LoadScene("WinScene");
+    }
+
+
+    public bool TryToSelectBodyPart(int bodyPartIndex)
+    {
+        Assert.IsNotNull(gameStateMachine.CorrectSequenceOrder);
+
+        if (gameStateMachine.CurrentCorrectNumber > gameStateMachine.CorrectSequenceOrder.Length)
+        {
+            UnityEngine.Debug.LogError($"Sequence array dim is: {gameStateMachine.CurrentCorrectNumber} you are trying to read position {gameStateMachine.CurrentCorrectNumber}");
+        }
+
+        gameStateMachine.CurrentCorrectNumber = Math.Min(gameStateMachine.CurrentCorrectNumber, gameStateMachine.CorrectSequenceOrder.Length);
+        int correctImageIndex = gameStateMachine.CorrectSequenceOrder[gameStateMachine.CurrentCorrectNumber];
+
+        if (bodyPartIndex == correctImageIndex)
+        {
+            gameStateMachine.CurrentCorrectNumber++;
+            gameStateMachine.OnSequenceProgress?.Invoke(true);
+            if (gameStateMachine.CurrentCorrectNumber >= gameStateMachine.CurrentSequenceLength)
+            {
+                EndGame(true);
+            }
+            return true;
+        }
+
+        gameStateMachine.CurrentCorrectNumber = 0;
+        gameStateMachine.OnSequenceProgress?.Invoke(false);
+        AudioManager.Get().PlayWoorp();
+        return false;
     }
 }

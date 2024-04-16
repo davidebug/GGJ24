@@ -36,7 +36,7 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             gameManager = GameManager.Get();
         }
 
-        gameManager.OnWrongSequence += Unselect;
+        gameManager.gameStateMachine.OnSequenceProgress += CheckAndUnselect;
        
     }
     private void OnEnable()
@@ -49,7 +49,7 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         if (gameManager != null)
         {
-            gameManager.OnWrongSequence -= Unselect;
+            gameManager.gameStateMachine.OnSequenceProgress -= CheckAndUnselect;
         }
     }
     public void OnPointerClick(UnityEngine.EventSystems.PointerEventData eventData)
@@ -104,8 +104,11 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
-    private void Unselect()
+    private void CheckAndUnselect(bool isPlayerMakingProgress)
     {
+        if (isPlayerMakingProgress)
+            return;
+
         IsSelected = false;
         bodyImage.color = original;
     }

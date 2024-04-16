@@ -12,8 +12,9 @@ public class GameStateMachine : StateMachine
 
     public LevelDataAssetScriptableObject levelDatasSO;
     private int levelIndex = 1;
-    public Action OnCorrectSequence;
-    public Action OnWrongSequence;
+    /* Action Called every time there is a progress by the player on reconstructing the sequence: true if the next step is correct, false otherwise */
+    public Action<bool> OnSequenceProgress;
+    public Action<int> OnBodyPartClicked;
     public Action<GameState> OnGameStateChanged;
     public Action OnStageBegin;
     public RectTransform bodyRectTransformPlaceHolder;
@@ -22,6 +23,7 @@ public class GameStateMachine : StateMachine
     public float CurrentTime;
     public float MaxTime;
     public Character currentCharacter;
+
     public int TotalSequenceLength
     {
         get { return CorrectSequenceOrder.Length; }
@@ -85,53 +87,8 @@ public class GameStateMachine : StateMachine
     }
 
 
-    public void LoadStage(int levelIndex)
-    {
-        if (levelIndex >= levelDatasSO.characters.Length)
-            return;
-
-        if (currentCharacter != null)
-        {
-            Destroy(currentCharacter);
-        }
-
-        currentCharacter = Instantiate(levelDatasSO.GetCharacter(levelIndex));
-        currentCharacter.gameObject.transform.SetParent(bodyRectTransformPlaceHolder, false);
-        currentCharacter.gameObject.SetActive(false);
-
-        CurrentTime = 0;
-        MaxTime = currentCharacter.MaxTime;
-        CorrectSequenceOrder = currentCharacter.sequenceOrder;
-        currentSequenceLength = CorrectSequenceOrder.Length;
-        CurrentCorrectNumber = 0;
-
-    }
-
-    public void ShowCurrentCharacter()
-    {
-        currentCharacter.gameObject.SetActive(true);
-        RectTransform rectTransform = currentCharacter.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = Vector3.zero;
-    }
 
  
 
-    private IEnumerator WaitForVictory()
-    {
-        // Wait for 3 seconds
-        yield return new WaitForSeconds(2);
-        levelIndex++;
-        StartNewGame();
-    }
-
-    public void NextStage()
-    {
-        LoadStage(levelIndex);
-    }
-
-
-    public void WinGame()
-    {
-        SceneManager.LoadScene("WinScene");
-    }
+  
 }
