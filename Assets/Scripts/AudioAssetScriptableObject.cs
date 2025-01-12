@@ -35,9 +35,10 @@ public class AudioAssetScriptableObject : ScriptableObject
 
     public AudioClip GetRandomAudioLaugh(int levelIndex)
     {
-        int i = Random.Range(levelIndex, levelIndex+2);
-        i = Mathf.Clamp(i,0, SFX_Laughes.Length);   
-        return SFX_Laughes[i];
+       
+        int randomIndex = Mathf.Clamp(Random.Range(levelIndex, SFX_Laughes.Length), 0, SFX_Laughes.Length);
+        Debug.Log($"getting random from {levelIndex} ");
+        return SFX_Laughes[randomIndex];
     }
 
     public AudioClip GetRandomWoorp()
