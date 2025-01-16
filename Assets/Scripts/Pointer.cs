@@ -44,8 +44,6 @@ public class Pointer : MonoBehaviour
             // Reset rotation when mouse button is released
             rotateCursor = false;
             Cursor.SetCursor(cursorTexture2, hotSpot, cursorMode);
-//            audioSource.clip = fetherSound;
-            audioSource.Play();
 
         }
     }
