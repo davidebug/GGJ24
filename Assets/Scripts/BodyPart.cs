@@ -59,13 +59,13 @@ public class BodyPart : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void OnPointerEnter(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        Debug.Log($"Pointer entered on Image {bodyNumberIndex}");
+        //Debug.Log($"Pointer entered on Image {bodyNumberIndex}");
         ShowHoverEffect(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log($"Pointer exited on Image {bodyNumberIndex}");
+        //Debug.Log($"Pointer exited on Image {bodyNumberIndex}");
         ShowHoverEffect(false);
     }
 
